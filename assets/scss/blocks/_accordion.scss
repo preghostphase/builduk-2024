@@ -1,0 +1,83 @@
+// ===============================================================
+// Accordion styling & vendors
+// ===============================================================
+
+// Accordion js plugin https://github.com/oncode/handorgel
+@import "../../../node_modules/handorgel/src/scss/style";
+
+.handorgel.accordion {
+	border: 0;
+
+	.handorgel__header {
+		margin-bottom: 1.5rem;
+	}
+
+	.svg-wrapper {
+		width: 2.5rem;
+		height: 2.5rem;
+
+		svg {
+			transition: all 0.2s ease-in;
+			fill: $color-secondary;
+		}
+	}
+
+	.handorgel__header__button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 2rem 1.75rem;
+		font-size: var(--font-medium);
+		font-weight: 400;
+		border: 2px solid $color-grey-light;
+		transition: all 0.2s ease-in;
+		color: $color-secondary;
+		background: $color-white;
+
+		&:hover {
+			background: $color-secondary !important;
+			color: $color-white !important;
+
+			svg {
+				fill: $color-white;
+			}
+		}
+	}
+
+	.handorgel__header--open {
+		.handorgel__header__button {
+			background-color: transparent;
+		}
+	}
+
+	.handorgel__header--opened {
+		margin-bottom: 0;
+
+		.handorgel__header__button {
+			background-color: $color-primary;
+			color: $color-white;
+
+			svg {
+				transform: rotate(180deg);
+				fill: $color-white;
+			}
+		}
+	}
+
+	.handorgel__content {
+		border: none;
+	}
+
+	.handorgel__content__inner {
+		border: 2px solid $color-grey-light;
+		border-top: 0;
+		padding: 3rem;
+		margin-bottom: 1.5rem;
+
+		// Set vertical rhythm for accordion content
+		> *:not(:last-child) {
+			margin-top: 0 !important;
+			margin-bottom: 2rem !important;
+		}
+	}
+}

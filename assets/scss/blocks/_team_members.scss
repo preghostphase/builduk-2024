@@ -1,0 +1,82 @@
+// ===============================================================
+// Team member custom block
+// ===============================================================
+
+div[id^="team-members-"] {
+	.team-member__wrapper {
+		display: grid;
+		grid-gap: 2rem;
+
+		@include media(">phone") {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media(">desktop") {
+			grid-gap: 4rem;
+		}
+	}
+
+	.team-member__single {
+		background: linear-gradient(
+			to bottom,
+			$color-white,
+			$color-white 40%,
+			$color-grey-light 40%,
+			$color-grey-light 100%
+		);
+		padding: 2.5rem;
+		text-align: center;
+		transition: all 0.3s ease;
+
+		@include media(">desktop") {
+			padding: 3.5rem;
+		}
+	}
+
+	a.team-member__single {
+		&::before {
+			background: $color-primary;
+			height: 5px;
+		}
+		&:hover,
+		&:focus {
+			.team-member__image {
+				transform: translateY(-10px);
+			}
+			.team-member__role {
+				color: $color-secondary;
+			}
+		}
+	}
+
+	.team-member__image {
+		@include ratio-box(100px, 100px);
+		margin-bottom: 2rem;
+		transition: all 0.3s ease;
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	p.team-member__name {
+		font-size: var(--font-large);
+		color: $color-primary;
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	.team-member__role {
+		margin: 0;
+		color: $color-secondary;
+	}
+
+	.team-member__contact {
+		margin-top: 1.5rem;
+	}
+}

@@ -1,0 +1,50 @@
+// ===============================================================
+// Search page
+// ===============================================================
+
+.search__wrapper {
+	@include constrain($small: true);
+	margin-bottom: 4rem;
+
+	@include media(">desktop") {
+		margin-bottom: 6rem;
+	}
+}
+
+.search__noresults {
+	margin: 6rem 0;
+}
+
+.search__listings {
+	@include media(">desktop") {
+		max-width: 950px;
+	}
+}
+
+.search-card {
+	padding: 1.5rem;
+	background: $color-white;
+	border: 2px solid $color-grey-light;
+	transition: all 0.3s ease;
+
+	&:not(:first-child) {
+		margin-top: 1.5em;
+	}
+
+	&:hover,
+	&:focus {
+		background: $color-grey-light;
+	}
+}
+
+.search-card__title {
+	color: $color-secondary;
+	font-size: var(--font-medium);
+	font-weight: 700;
+}
+
+.search-card__excerpt p {
+	color: $color-secondary;
+	font-size: var(--font-xxsmall);
+	margin-top: 0.75rem;
+}

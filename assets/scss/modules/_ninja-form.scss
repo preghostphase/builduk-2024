@@ -1,0 +1,73 @@
+// ===============================================================
+// Ninja forms styling
+// ===============================================================
+
+.content {
+	.nf-form-content {
+		padding: 0;
+		margin: 0 0 6rem;
+	}
+
+	.nf-form-fields-required {
+		margin-bottom: 1.5rem;
+	}
+
+	.nf-form-content label {
+		font-size: var(--font-xsmall);
+		font-weight: 400;
+		line-height: 1;
+	}
+
+	.nf-error .nf-error-msg {
+		margin-bottom: 1.5rem;
+	}
+
+	.nf-form-content .label-above .nf-field-label,
+	.nf-form-content .label-below .nf-field-label,
+	.nf-form-content .label-hidden .nf-field-label {
+		margin-bottom: 0.25rem;
+	}
+
+	.nf-form-content .list-select-wrap .nf-field-element > div,
+	.nf-form-content input:not([type="button"]),
+	.nf-form-content textarea {
+		background: $color-grey-light;
+		border: 1px solid #999;
+		border-radius: 0;
+		box-shadow: none;
+		color: #666;
+		transition: all 0.5s;
+	}
+
+	.nf-form-content button,
+	.nf-form-content input[type="button"],
+	.nf-form-content input[type="submit"] {
+		background: $color-black;
+		border: 0;
+		color: $color-white;
+		transition: all 0.5s;
+		height: auto;
+		text-transform: none;
+		font-weight: 700;
+		min-width: 120px;
+		position: relative;
+
+		&::before {
+			content: '';
+			position:absolute;
+			bottom: 0;
+			height: 3px;
+			width: 0;
+			left: 0;
+			transition: all 0.3s ease;
+			background: $color-white;
+		}
+
+		&:hover {
+			cursor: pointer;
+			&::before {
+				width: 100%;
+			}
+		}
+	}
+}

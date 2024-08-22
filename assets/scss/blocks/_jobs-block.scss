@@ -1,0 +1,37 @@
+// ===============================================================
+// Jobs custom block
+// ===============================================================
+
+// Addition of CSS for back end wp-admin view
+@import "../modules/job-listings";
+
+div[id^="jobs-block-"] {
+	width: 100%;
+	height: auto;
+	margin-bottom: 4rem !important;
+
+	.jobs-block-title {
+		font-weight: 700;
+		font-size: var(--font-medium);
+		color: $color-primary;
+		margin-bottom: 1.5rem;
+	}
+
+	.sjb-filters,
+	nav {
+		display: none;
+	}
+
+	.job-listing {
+		border: none;
+	}
+
+	.job-listing__content {
+		color: $color-white;
+		padding-top: 1rem;
+	}
+
+	p {
+		font-size: var(--font-xxsmall);
+	}
+}

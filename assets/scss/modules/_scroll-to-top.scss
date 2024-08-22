@@ -1,0 +1,70 @@
+//===============================================================
+// Scroll to Top button
+// ===============================================================
+
+.scrollToTop {
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	height: 35px;
+	width: 35px;
+	min-width: 0;
+	bottom: 25px;
+	right: 25px;
+	z-index: 29;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+	outline: none;
+	border: none;
+	background: $color-primary;
+	border: 3px solid $color-primary;
+	color: white;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+
+	@include media(">desktop") {
+		width: 50px;
+		height: 50px;
+	}
+
+	&:hover {
+		background: $color-secondary;
+		box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+		border: 3px solid $color-primary;
+		.svg-wrapper svg {
+			fill: $color-white;
+		}
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	.svg-wrapper {
+		width: auto;
+		height: auto;
+		margin: 0;
+		@include media(">desktop") {
+			padding-bottom: 3px;
+		}
+
+		svg {
+			fill: $color-white;
+			width: 15px;
+
+			@include media(">desktop") {
+				width: 25px;
+			}
+		}
+	}
+
+	&.hide {
+		transform: translateY(200px);
+	}
+
+	&.show {
+		transform: translateY(0) !important;
+	}
+}

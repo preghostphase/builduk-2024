@@ -1,0 +1,94 @@
+// ===============================================================
+// Layout for single post page, based on plugin templates
+// ===============================================================
+
+.post-meta {
+
+	.sfsi_shortcode_container {
+		float: none;
+
+		a {
+			&::before {
+				content: none;
+			}
+		}
+	}
+	.post-categories {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin-top: 0;
+		margin-bottom: 2rem!important;
+
+		li {
+			padding: 0;
+			margin: 0 1rem 0.25rem 0;
+			border-bottom: none;
+			font-size: var(--font-xsmall);
+
+			a {
+				font-weight: 700;
+				font-size: var(--font-xsmall);
+				position: relative;
+
+				&::after {
+					content: ",";
+					position: absolute;
+					right: -6px;
+					bottom: 0;
+					font-weight: 700;
+					font-size: var(--font-xsmall);
+					color: $color-primary;
+				}
+			}
+
+			&:last-of-type a:after {
+				display: none;
+			}
+		}
+	}
+
+	.post-date {
+		font-size: var(--font-xsmall);
+		color: $color-secondary;
+		margin-bottom: 0.5rem;
+
+		span {
+			color: $color-primary;
+			font-weight: 700;
+		}
+	}
+}
+
+.post-related {
+	padding-bottom: 50px;
+}
+
+.post-related__wrapper {
+	@include constrain;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.post-related__header {
+	width: 100%;
+	height: auto;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.post-related__title {
+	margin-right: auto;
+	font-size: var(--font-large);
+	line-height: 1.25;
+}
+
+.post-related__items {
+	width: 100%;
+	height: auto;
+	position: relative;
+}

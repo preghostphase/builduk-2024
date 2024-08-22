@@ -1,0 +1,298 @@
+// ===============================================================
+// Styling of simple job board listings
+// ===============================================================
+
+// Job board plugin listings
+.sjb-page {
+	background: none;
+	color: inherit;
+
+	// Overrides for plugin styling
+	.sjb-detail .list-data .v1 {
+		ul {
+			list-style: inherit;
+			margin: 3rem 0;
+			padding: 0;
+		}
+
+		ul li {
+			font-size: inherit;
+			line-height: inherit;
+			padding-left: inherit;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		div {
+			font-size: var(--font-xsmall);
+		}
+	}
+}
+
+// style the job listing buttons
+.sjb-page .btn {
+	@extend .button;
+}
+
+// Sizing controlled via EM units ( ͡❛ ͜ʖ ͡❛)
+.job-listing {
+	display: block;
+	padding: 1em;
+	font-size: 10px;
+	max-width: 900px;
+
+	@include media(">tablet") {
+		font-size: 12px;
+	}
+
+	// Spacing controls
+	&:not(:first-child) {
+		margin-top: 1.5em;
+	}
+}
+
+a.job-listing {
+	background: $color-secondary;
+	transition: all 0.3s ease;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		height: 3px;
+		background-color: $color-secondary;
+		transition: all 0.3s ease;
+	}
+
+	i {
+		transition: all 0.3s ease;
+	}
+
+	&:hover,
+	&:focus {
+		background: $color-primary;
+
+		&::before {
+			width: 100%;
+		}
+
+		i {
+			color: $color-white;
+		}
+	}
+}
+
+.job-listing__title {
+	margin-bottom: 0.25em;
+	font-size: 2em;
+	color: $color-white;
+	font-weight: 700;
+}
+
+.job-listing__meta {
+	display: flex;
+	flex-wrap: wrap;
+	color: $color-white;
+	font-size: 1.2em;
+	white-space: nowrap;
+
+	div {
+		margin-right: 0.8em;
+	}
+	i {
+		margin-right: 0.4em;
+		color: $color-primary;
+	}
+}
+
+// ===============================================================
+// Light theme for vacancies page
+// ===============================================================
+
+.jobpost-light a.job-listing {
+	background: $color-white;
+}
+
+.jobpost-light .job-listing {
+	padding: 1.5em;
+	font-size: 11px;
+	border: 2px solid $color-grey-light;
+
+	@include media(">tablet") {
+		font-size: 12px;
+	}
+
+	// Spacing controls
+	&:not(:first-child) {
+		margin-top: 1.5em;
+	}
+
+	.job-listing__title {
+		color: $color-primary;
+	}
+
+	.job-listing__meta {
+		margin-bottom: 1em;
+		color: $color-secondary;
+
+		i {
+			color: $color-secondary;
+		}
+	}
+
+	.job-listing__content {
+		color: $color-secondary;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+// ===============================================================
+// Filter & pagination styling
+// ===============================================================
+
+.sjb-page .sjb-filters.sjb-filters-v1 {
+	background-color: transparent;
+	margin: 0 0 3rem;
+	padding: 0;
+
+	.form-group {
+		margin-bottom: 0;
+	}
+
+	// Layout control for the search fields
+	.filters-form .row {
+		margin: 0;
+		display: grid;
+		grid-gap: 2rem;
+
+		// Clear all the crazy floats & padding
+		> * {
+			float: none;
+			padding: 0;
+			min-height: 0;
+			line-height: 1;
+			width: 100%;
+		}
+
+		@include media(">phone") {
+			// grid-gap: 3rem;
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media(">desktopXLarge") {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.sjb-search-keywords {
+			@include media(">desktopXLarge") {
+				grid-column: 1/-1;
+			}
+		}
+	}
+
+	.form-control {
+		box-sizing: border-box;
+		border: 0;
+		color: $color-secondary;
+		font-size: var(--font-xxsmall);
+		height: auto;
+		margin: 0;
+		background-color: $color-grey-light;
+		box-shadow: none;
+		padding: 1.25rem;
+		transition: all 0.2s ease-in;
+		border: 2px solid $color-secondary;
+		overflow: hidden;
+
+		&:focus {
+			background-color: $color-white;
+			border: 2px solid $color-third;
+		}
+
+		&::placeholder {
+			color: $color-secondary;
+		}
+	}
+
+	.btn-search {
+		margin: 0;
+		width: auto;
+		height: auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 100px;
+		border: none;
+		padding: 1.5rem 1rem;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1;
+		border-radius: 0;
+		background-color: $color-primary;
+
+		@include media(">desktopXLarge") {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.sjb-page .pagination {
+	float: none;
+	margin: 4rem 0 0 0;
+	display: grid;
+	grid-gap: 1.25rem;
+	grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+
+	li {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+		padding: 0;
+		&:hover,
+		&:focus {
+			 a, span {
+				background: $color-primary;
+				color: $color-white;
+			 }
+		}
+	}
+
+	li .next,
+	li .prev,
+	li span,
+	li a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		background: $color-grey-light;
+		color: $color-secondary;
+		font-weight: 400;
+		font-size: var(--font-small);
+		padding: 1rem 1.25rem;
+		line-height: 1;
+		width: 38px;
+		height: 38px;
+	}
+
+	li span.current {
+		color: $color-white;
+		background-color: $color-primary;
+		font-weight: 700;
+
+		&:hover,
+		&:focus {
+			background-color: $color-primary;
+		}
+	}
+}

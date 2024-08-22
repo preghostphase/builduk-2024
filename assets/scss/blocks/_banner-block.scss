@@ -1,0 +1,127 @@
+// ===============================================================
+// Banner block styling
+// ===============================================================
+
+.banner-block {
+	max-width: none !important;
+	margin-left: 0 !important;
+
+	.banner-block__wrapper {
+		position: relative;
+		height: 400px;
+
+		@include media(">desktop") {
+			height: 500px;
+		}
+
+		@include media(">desktopLarge") {
+			height: 570px;
+		}
+	}
+
+	&.banner-block--hasBody {
+		margin-bottom: 10rem;
+		margin-top: 4rem;
+
+		@include media(">tablet") {
+			margin-bottom: 6rem;
+		}
+	}
+
+	&.banner-block--hasCredit {
+		margin-top: 5rem;
+
+		@include media(">tablet") {
+			margin-top: 4rem;
+			margin-bottom: 6rem;
+		}
+	}
+
+	&.banner-block--hasLink {
+		margin-bottom: 10rem;
+
+		@include media(">tablet") {
+			margin-bottom: 6rem;
+		}
+
+		.banner-block__body {
+			padding-bottom: 4.5rem;
+		}
+	}
+
+	.banner-block__image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.banner-block__body {
+		background: $color-secondary;
+		position: absolute;
+		bottom: -7rem;
+		left: 10%;
+		right: 10%;
+		width: 80%;
+		padding: 2.5rem;
+
+		@include media(">tablet") {
+			top: 35%;
+			bottom: auto;
+			right: 0;
+			left: auto;
+			width: auto;
+			max-width: 80%;
+		}
+
+		@include media(">desktop") {
+			max-width: 90%;
+		}
+
+		@include media(">desktopXLarge") {
+			max-width: 910px;
+		}
+
+		h2 {
+			color: $color-white;
+		}
+	}
+
+	.banner-block__credit {
+		position: absolute;
+		top: -3rem;
+		right: 1.5rem;
+		font-size: var(--font-xxsmall);
+		color: $color-secondary;
+
+		@include media(">tablet") {
+			top: auto;
+			bottom: -3rem;
+		}
+	}
+
+	.banner-block__link {
+		left: 2.5rem;
+		position: absolute;
+		bottom: -2rem;
+		font-weight: 700;
+		min-width: 0;
+
+		@include media(">tablet") {
+			left: 3rem;
+		}
+
+		&:hover,
+		&:focus {
+			color: #fff;
+		}
+	}
+}

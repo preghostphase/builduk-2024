@@ -1,0 +1,65 @@
+// ===============================================================
+// Menu social block
+// ===============================================================
+
+.social-block {
+	@include constrain();
+	margin-bottom: 6rem;
+}
+
+.social-block__list {
+	list-style: none;
+	display: flex;
+	margin-bottom: 2rem;
+}
+
+.social-block__list-link {
+	margin-right: 4rem;
+	.svg-wrapper {
+		width: 35px;
+		height: 35px;
+	}
+
+	svg {
+		fill: $color-white;
+		transition: all 0.3s ease;
+	}
+
+	&:hover {
+		svg {
+			fill: $color-primary;
+		}
+	}
+}
+
+// --------- Desktop override
+.wrapper-desktop {
+	.social-block {
+		margin-bottom: 0;
+		padding: 0;
+		font-size: var(--font-xsmall);
+		text-align: center;
+	}
+
+	.social-block__title {
+		display: none;
+	}
+
+	.social-block__list {
+		justify-content: center;
+		margin-bottom: 3vmin;
+	}
+
+	.social-block__list-link {
+		margin: 0 1rem;
+
+		.svg-wrapper {
+			width: 25px;
+			height: 25px;
+		}
+	}
+	.social-block__number {
+		font-size: var(--font-xxsmall);
+		line-height: 1;
+	}
+}

@@ -1,0 +1,426 @@
+// ===============================================================
+// Homepage banner
+// ===============================================================
+
+.home-banner {
+	height: auto;
+	min-height: 80vh;
+	display: flex;
+	position: relative;
+
+	@include media(">desktop") {
+		height: 600px;
+		min-height: none;
+	}
+
+	@include media(">desktopLarge") {
+		height: 800px;
+	}
+
+	&.home-banner--center-content {
+		.home-banner__content {
+			text-align: center;
+
+			&-title {
+				margin: 0 auto;
+				max-width: 900px;
+			}
+
+			:not(:last-child) {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+}
+
+.home-banner__wrapper {
+	width: 100%;
+	height: auto;
+	display: flex;
+	align-items: center;
+}
+
+.home-banner__image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000000;
+		opacity: 0.34;
+	}
+
+	picture {
+		width: 100%;
+		height: 100%;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.home-banner__content {
+	@include constrain();
+	position: relative;
+	z-index: 2;
+	padding: 25px;
+
+	&-title {
+		font-size: var(--font-xxlarge);
+		color: $color-white;
+		line-height: 1.25;
+		max-width: 600px;
+	}
+
+	:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+
+	b {
+		color: $color-primary;
+	}
+
+	p {
+		display: none;
+		font-size: var(--font-medium);
+
+		@include media(">tablet") {
+			display: block;
+			color: #fff;
+		}
+	}
+
+	.button {
+		@include media(">desktopLarge") {
+			margin-right: 2rem;
+		}
+
+		b {
+			margin: 0 0 0 5px;
+			white-space: nowrap;
+		}
+	}
+}
+
+// ===============================================================
+// Homepage Introduction
+// ===============================================================
+
+.home-intro {
+	width: 100%;
+	height: auto;
+	position: relative;
+	background-color: $color-secondary;
+	padding: 50px 0;
+
+	@include media(">tablet"){
+		padding: 70px 0;
+	}
+
+	@include media(">desktop"){
+		padding: 100px 0;
+		margin-bottom: 30px;
+	}
+
+	&__wrapper {
+		@include constrain();
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		flex-direction: column-reverse;
+		
+		@include media(">tablet"){
+			display: grid;
+			align-items: center;
+			grid-template-columns: 1fr 1fr;
+			gap: 60px;
+		}
+
+		@include media(">desktop"){
+			gap: 83px;
+		}
+	}
+	&__text {
+		width: 100%;
+		height: auto;
+		position: relative;
+
+		> * {
+			color: $color-white;
+		}
+
+		.button:hover,
+		.button:focus {
+			background-color: $color-white;
+			color: $color-primary;
+		}
+	}
+	&__image {
+		width: 100%;
+		height: auto;
+		position: relative;
+		margin-bottom: 2rem;
+
+		@include media(">tablet"){
+			margin-bottom: 0;
+		}
+
+		@include media(">desktop"){
+			min-height: 540px;
+			height: 100%;
+		}
+
+		&::before {
+			content: '';
+			z-index: 0;
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			width: 100%;
+			height: 100%;
+			background-color: $color-primary;
+
+			@include media(">tablet"){
+				top: -20px;
+				right: -20px;
+			}
+	
+			@include media(">desktopLarge"){
+				top: -35px;
+				right: -35px;		
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+
+// ===============================================================
+// Homepage CTA Section
+// ===============================================================
+
+.home-cta {
+	width: 100%;
+	height: auto;
+	position: relative;
+	padding: 30px 0;
+
+	@include media(">tablet"){
+		padding: 30px 0;
+	}
+
+	@include media(">desktop"){
+		padding: 50px 0;
+	}
+
+	&__wrapper {
+		@include constrain();
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+
+	&__grid {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 15px;
+
+		@include media(">tablet"){
+			gap: 50px;
+			grid-template-columns: 1fr 1fr;
+			padding-top: 15px;
+		}
+
+		@include media(">desktop"){
+			gap: 60px;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&-item {
+			width: 100%;
+			height: auto;
+			position: relative;
+			display: block;
+
+			&:hover,
+			&:focus {
+				.home-cta__grid-item-image img {
+					transform: scale(1.1);
+				}
+			}
+
+			&-image {
+				width: 100%;
+				height: 275px;
+				position: relative;
+				z-index: 1;
+				overflow: hidden;
+
+				@include media(">tablet"){
+					height: 362px;
+				}
+
+				> img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					transition: all 0.3s ease;
+					transform: scale(1);
+				}
+			}
+
+			&-text {
+				background-color: $color-primary;
+				padding: 15px;
+				position: relative;
+				z-index: 0;
+
+				> h4 {
+					color: $color-white;
+				}
+			}
+		}
+	}
+}
+
+// ===============================================================
+// Homepage Video Section
+// ===============================================================
+
+.home-video {
+	width: 100%;
+	height: auto;
+	position: relative;
+	padding: 30px 0;
+
+	@include media(">tablet"){
+		padding: 30px 0;
+	}
+
+	@include media(">desktop"){
+		padding: 50px 0;
+	}
+
+	&__wrapper {
+		@include constrain();
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+
+	&__title {
+		display: block;
+		margin-bottom: 1.5rem;
+	}
+
+	&__playback {
+		width: 100%;
+
+		video {
+			width: 100%;
+			height: auto;
+			position: relative;
+		}
+	}
+}
+
+// ===============================================================
+// Homepage News Section
+// ===============================================================
+
+.home-news {
+	width: 100%;
+	height: auto;
+	position: relative;
+	padding: 30px 0 50px;
+
+	@include media(">tablet"){
+		padding: 30px 0 60px;
+	}
+
+	@include media(">desktop"){
+		padding: 50px 0 80px;
+	}
+}
+
+.home-news__wrapper {
+	@include constrain;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.home-news__header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 15px;
+
+	@include media(">tablet"){
+		margin-bottom: 30px;
+	}
+}
+
+.home-news__items {
+	display: block;
+	width: 100%;
+	height: auto;
+	position: relative;
+
+	@include media(">tablet"){
+		// display: flex;
+		// justify-content: space-between;
+		// gap: 16px;
+	}
+
+	.article-card {
+		width: 100%;
+
+		&:hover,
+		&:focus{
+			&::before{
+				width: calc(100% - 15px);
+			}
+		}
+
+		@include media(">phone"){
+			width: 100%;
+			margin-bottom: 25px;
+		}
+
+		@include media(">tablet") {
+			width: 31%;
+			padding-right: 0;
+			min-width: unset;
+			margin: 0;
+			&:hover,
+			&:focus{
+				&::before{
+					width: 100%;
+				}
+			}
+		}
+	}
+}

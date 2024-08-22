@@ -1,0 +1,47 @@
+// ===============================================================
+// Vendors
+// ===============================================================
+
+// Media query library https://eduardoboucas.github.io/include-media/
+@import "../../node_modules/include-media/dist/include-media";
+
+// Utility css library https://basscss.com/
+@import "../../node_modules/basscss/css/basscss.min";
+
+// Slider for home quotes https://swiperjs.com/
+@import "../../node_modules/swiper/swiper-bundle";
+
+// AOS Styles
+@import "../../node_modules/aos/src/sass/aos";
+
+// ===============================================================
+// Base Styles
+// ===============================================================
+@import "./abstracts";
+@import "./base";
+
+// ===============================================================
+// Layouts (use for pages and templates)
+// ===============================================================
+@import "./layouts/header";
+@import "./layouts/footer";
+@import "./layouts/global";
+@import "./layouts/page-home";
+@import "./layouts/page-search";
+@import "./layouts/page-post";
+@import "./layouts/page-404";
+@import "./layouts/page-news";
+@import "./layouts/page-contact";
+@import "./layouts/page-builder";
+
+// ===============================================================
+// Modules (use for reusable modules)
+// ===============================================================
+@import "./modules/ninja-form";
+@import "./modules/social-block";
+@import "./modules/article-card";
+@import "./modules/banner";
+@import "./modules/scroll-to-top";
+@import "./modules/custom-pagination";
+@import "./modules/socialshare";
+@import "./modules/google-maps";

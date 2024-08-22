@@ -1,0 +1,494 @@
+// ===============================================================
+// Header and menu styling
+// ===============================================================
+
+// Offset padding for scroll on mobile & tablets
+html,
+body {
+	scroll-padding-top: $mobile-header-height + 20px;
+
+	@include media(">desktop") {
+		scroll-padding-top: 20px;
+	}
+}
+
+// Hide overflow on open menu to stop scroll
+body.menu-active-desktop,
+body.menu-active-mobile {
+	overflow: hidden;
+}
+
+body.single-jobpost {
+	.scrollToTop {
+		display: none;
+	}
+	.post__date {
+		display: none;
+	}
+}
+
+.header {
+	@include box-shadow-small();
+	z-index: $z-index-menu;
+	position: relative;
+	width: 100%;
+	height: $mobile-header-height;
+	background: $color-white;
+	transition: all 0.2s ease-in;
+	border-bottom: 5px solid $color-primary;
+
+	@include media(">desktop") {
+		width: $desktop-header-width;
+		background-color: $color-white;
+		height: auto;
+		transition: none;
+	}
+
+	body.menu-active-mobile & {
+		height: 100%;
+		width: 100%;
+	}
+	// Headroom styling for mobile only
+	&.headroom--pinned {
+		transform: translateY(0%);
+	}
+
+	&.headroom--unpinned {
+		transform: translateY(-100%);
+		@include media(">desktop") {
+			transform: translateY(0%);
+		}
+	}
+}
+
+// ===============================================================
+// Mobile menu and wrapper
+// ===============================================================
+
+.wrapper-mobile {
+	@include constrain();
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: $mobile-header-height;
+	background: $color-white;
+
+	@include media(">desktop") {
+		display: none;
+		visibility: hidden;
+	}
+
+	.wrapper-mobile__logo {
+		display: inline-block;
+		flex: 0 1 200px;
+		height: 50px;
+		margin-right: 3rem;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	.wrapper-mobile__button {
+		display: block;
+		position: relative;
+		border: 0;
+		background: none;
+		padding: 0;
+		height: 40px;
+		width: 42px;
+		min-width: 0;
+		z-index: $z-index-header;
+		transition: opacity 0.2s ease;
+
+		&:focus,
+		&:hover {
+			cursor: pointer;
+			outline: 0;
+		}
+
+		&.active {
+			.top {
+				transform: translateY(10px) translateX(0) rotate(45deg);
+				background: $color-primary;
+			}
+			.middle {
+				opacity: 0;
+			}
+			.bottom {
+				transform: translateY(-13px) translateX(0) rotate(-45deg);
+				background: $color-primary;
+			}
+		}
+
+		span {
+			background: $color-primary;
+			border: none;
+			height: 3px;
+			width: 100%;
+			position: absolute;
+			top: 8px;
+			left: 0;
+			transition: all 0.2s ease;
+			cursor: pointer;
+
+			&:nth-of-type(2) {
+				top: 20px;
+			}
+			&:nth-of-type(3) {
+				top: 32px;
+			}
+		}
+	}
+}
+
+.menu-mobile {
+	display: block;
+	z-index: -1;
+	position: fixed;
+	background: linear-gradient(to bottom, lighten($color-black, 5%) 0%, $color-secondary 5%);
+	top: $mobile-header-height;
+	left: auto;
+	right: 0;
+	width: 100%;
+	height: calc(100% - #{$mobile-header-height});
+	opacity: 0;
+	visibility: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
+	transition: all 0.2s ease-in;
+
+	@include media(">desktop") {
+		display: none;
+		visibility: hidden;
+	}
+
+	&.open {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.search {
+		@include constrain();
+		margin-bottom: 4rem;
+		display: flex;
+
+		input {
+			padding: 1rem;
+			width: inherit;
+			background: $color-grey-light;
+
+			&:focus {
+				background: $color-white;
+				outline: none;
+			}
+		}
+
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem 1.5rem;
+			background: $color-primary;
+			min-width: 0;
+		}
+
+		.svg-wrapper {
+			width: 20px;
+			height: 20px;
+			margin: 0;
+		}
+
+		svg {
+			fill: $color-white;
+		}
+	}
+
+
+	.menu {
+		@include constrain();
+		margin-bottom: 4rem;
+		position: relative;
+		list-style: none;
+		line-height: 1.2;
+
+		// Top level items
+		> .menu-item {
+			opacity: 1;
+
+			&:not(:last-child) {
+				margin-bottom: 2.5rem;
+			}
+		}
+		> .menu-item a {
+			display: block;
+			color: $color-white;
+			text-decoration: none;
+			font-size: var(--font-large);
+		}
+
+		> .menu-item-button a {
+			background-color: $color-primary;
+			color: $color-white;
+			font-family: $font-primary;
+			font-size: var(--font-large);
+			transition: all 0.3s ease;
+			border-radius: 15px;
+			padding: 15px 30px;
+			text-align: center;
+			width: fit-content;
+
+			&::after {
+				content: none;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: $color-secondary;
+			}
+		}
+
+		// First level submenu
+		> .menu-item-has-children > .sub-menu {
+			list-style: none;
+		}
+		> .menu-item-has-children > .sub-menu > .menu-item > a {
+			font-size: var(--font-medium);
+			margin-top: 1rem;
+
+			&:before {
+				content: "\2014";
+				color: $color-primary;
+				margin-right: 1rem;
+			}
+		}
+	}
+
+	.menu-mobile__wrapper {
+		padding: 100px 1rem 0;
+	}
+}
+
+// ===============================================================
+// Desktop menu and wrapper
+// ===============================================================
+
+.wrapper-desktop {
+	display: none;
+
+	@include media(">desktop") {
+		display: flex;
+		padding: 0 30px;
+		align-items: center;
+		justify-content: space-between;
+		height: auto;
+		width: $desktop-header-width;
+		background: $color-white;
+	}
+
+	.wrapper-desktop__logo {
+		display: flex;
+		align-items: center;
+		height: auto;
+		width: 250px;
+
+		@include media(">desktopLarge") {
+			width: 260px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.svg-wrapper {
+			height: 100%;
+
+			svg {
+				fill: $color-white;
+			}
+		}
+	}
+
+	.wrapper-desktop__menu {
+		width: auto;
+		height: 100%;
+	}
+
+
+}
+
+.menu-desktop {
+	display: none;
+
+	@include media(">desktop") {
+		z-index: 10;
+		display: block;
+		position: relative;
+		width: auto;
+		height: 100%;
+		background: none;
+	}
+
+	// Sizing controlled via EM units ( ͡❛ ͜ʖ ͡❛)
+	.menu {
+		flex: 1;
+		display: flex;
+		position: relative;
+		list-style: none;
+		line-height: 1;
+		font-size: calc(1rem + 2.5vmin);
+		font-size: clamp(12px, 4vmin, 40px);
+		height: 100%;
+		align-items: center;
+
+		// Top level items
+		> .menu-item:not(.menu-item-button) {
+			opacity: 1;
+			margin: 0 1.5rem;
+			position: relative;
+			height: 100%;
+			padding: 35px 0;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+
+		> .menu-item-button {
+			margin: 0 0 0 1.5rem;
+		}
+
+		> .menu-item a {
+			display:flex;
+			align-items: center;
+			height: 100%;
+			color: $color-secondary;
+			text-decoration: none;
+			font-family: $font-primary;
+			font-weight: 700;
+			font-size: var(--font-small);
+			transition: all 0.3s ease;
+			position: relative;
+			padding: 0;
+
+			&::after {
+				content: none;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: $color-primary;
+				transition: all 0.3s ease;
+			}
+
+			&:hover,
+			&:focus {
+				color: $color-primary;
+
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+
+		> .menu-item-button a {
+			background-color: $color-primary;
+			color: $color-white;
+			font-family: $font-primary;
+			font-size: var(--font-small);
+			transition: all 0.3s ease;
+			border-radius: 15px;
+			padding: 15px 30px;
+			text-align: center;
+
+			&::after {
+				content: none;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: $color-secondary;
+				color: $color-white;
+			}
+		}
+
+		// On hover open sub menu
+		.menu-item-has-children:hover,
+		.menu-item-has-children:focus {
+			> .sub-menu {
+				display: block;
+			}
+		}
+
+		// First level submenu
+		> .menu-item-has-children > .sub-menu {
+			list-style: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: $color-secondary;
+			width: 215px;
+			display: none;
+		}
+		> .menu-item-has-children > .sub-menu > .menu-item > a {
+			color: $color-white;
+			font-size: var(--font-xsmall);
+			padding: 2rem;
+
+			&::after {
+				background-color: $color-white;
+			}
+
+			&:hover {
+				background-color: $color-primary;
+				color: $color-white;
+			}
+		}
+
+		// Second level submenu currently disabled in settings but skeleton styling here if needed
+		> .menu-item-has-children > .sub-menu > .menu-item-has-children > .sub-menu {
+			list-style: none;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			right: 0;
+			background-color: $color-primary;
+			width: 215px;
+			display: none;
+			min-height: 100%;
+		}
+		> .menu-item-has-children > .sub-menu > .menu-item-has-children:hover,
+		> .menu-item-has-children > .sub-menu > .menu-item-has-children:focus {
+			> a {
+				color: $color-primary;
+				&::after {
+					width: 100%;
+				}
+			}
+			.sub-menu {
+				display: block;
+			}
+		}
+		> .menu-item-has-children > .sub-menu > .menu-item-has-children > .sub-menu > .menu-item > a {
+			color: $color-white;
+			font-size: var(--font-xsmall);
+			padding: 2rem;
+
+			&::after {
+				background-color: $color-white;
+			}
+
+			&:hover {
+				background-color: $color-secondary;
+				color: $color-white;
+			}
+		}
+	}
+}

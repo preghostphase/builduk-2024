@@ -1,0 +1,61 @@
+// ===============================================================
+// Map styling
+// ===============================================================
+
+.acf-map {
+	width: 100%;
+	height: 400px;
+	.marker__title {
+		color: $color-white;
+		font-size: var(--font-medium);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		display: block;
+		width: fit-content;
+	}
+
+	.gm-control-active {
+		min-width: auto!important;
+	}
+
+	.marker__address {
+		display: flex;
+		flex-direction: column;
+
+		span {
+			color: $color-white;
+			font-size: var(--font-small);
+		}
+	}
+	// has to be important tags on this i'm afraid :(
+	.gm-ui-hover-effect {
+		position: relative!important;
+		top: auto!important;
+		left: auto!important;
+		right: auto!important;
+		bottom: auto!important;
+		display: flex!important;
+		justify-content: flex-end!important;
+		float: right!important;
+		background-color: $color-white!important;
+		min-width: 30px!important;
+		opacity: 1!important;
+		margin: 0 0 15px 0!important;
+	}
+}
+
+.gm-style .gm-style-iw-c {
+	background-color: $color-white;
+	padding: 15px!important;
+	border-radius: 14px!important;
+}
+
+// background color for the box
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track,
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw-c,
+.gm-style .gm-style-iw-t::after {
+  background: $color-secondary;
+}
+
+

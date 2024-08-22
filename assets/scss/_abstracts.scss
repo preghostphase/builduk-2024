@@ -1,0 +1,234 @@
+// ===============================================================
+// FONTS
+// ===============================================================
+
+// @font-face {
+// 	font-family: "HelveticaSwitch";
+// 	font-weight: 400;
+// 	font-style: normal;
+// 	font-display: swap; /* Read next point */
+// 	unicode-range: U+000-5FF; /* Download only latin glyphs */
+// 	src: url("../../assets/fonts/HelveticaNeue.woff2") format("woff2"),
+// 		url("../../assets/fonts/HelveticaNeue.woff") format("woff");
+// }
+
+// @font-face {
+// 	font-family: "HelveticaSwitch";
+// 	font-weight: 700;
+// 	font-style: normal;
+// 	font-display: swap; /* Read next point */
+// 	unicode-range: U+000-5FF; /* Download only latin glyphs */
+// 	src: url("../../assets/fonts/HelveticaNeue-Bold.woff2") format("woff2"),
+// 		url("../../assets/fonts/HelveticaNeue-Bold.woff") format("woff");
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+@import url("https://use.typekit.net/cmy3rqg.css");
+
+// ===============================================================
+// SASS VARIABLES
+// ===============================================================
+
+// Site wide custom breakpoints for use with
+// https://eduardoboucas.github.io/include-media/
+/* prettier-ignore */
+$breakpoints: (
+	phone: (650 / 16) * 1em,
+	tablet: (800 / 16) * 1em,
+	desktop: (1000 / 16) * 1em,
+	desktopLarge: (1250 / 16) * 1em,
+	desktopXLarge: (1600 / 16) * 1em,
+	desktopXXLarge: (1850 / 16) * 1em,
+);
+
+// Special use custom breakpoints, see link for examples
+// https://eduardoboucas.github.io/include-media/#documentation
+$phone-portrait: "<650px", "portrait";
+$phone-landscape: "<800px", "landscape";
+$tablet-portrait: ">650px", "<1400px", "portrait";
+
+// Colors brands
+$color-primary: var(--theme-primary);
+$color-secondary: var(--theme-secondary);
+$color-third: #808080;
+
+// Colors generic
+$color-white: #fff;
+$color-black: #000;
+$color-grey-light: #f2f2f2;
+$color-grey-medium: #4d4d4d;
+
+// Menu header
+$mobile-header-height: 90px;
+$desktop-header-width: 100%;
+$desktop-header-width-large: 100%;
+
+// Z-Index
+$z-index-header: 50;
+$z-index-menu: 30;
+$z-index-modal: 999;
+
+// Fonts
+$font-primary: "museo-slab", "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-secondary: "interface", Helvetica, Arial, sans-serif;
+
+// ===============================================================
+// CSS ROOT VARIABLES
+// ===============================================================
+
+:root {
+	// Type scale
+	--font-xxsmall: 12px;
+	--font-xsmall: 14px;
+	--font-small: 16px;
+	--font-medium: 22px;
+	--font-large: 28px;
+	--font-xlarge: 30px;
+	--font-xxlarge: 40px;
+
+	@include media(">phone") {
+		--font-xxsmall: 14px;
+		--font-xsmall: 16px;
+		--font-small: 18px;
+		--font-medium: 24px;
+		--font-large: 35px;
+		--font-xlarge: 40px;
+		--font-xxlarge: 50px;
+	}
+
+	@include media(">desktop") {
+		--font-xxsmall: 14px;
+		--font-xsmall: 16px;
+		--font-small: 18px;
+		--font-medium: 30px;
+		--font-large: 35px;
+		--font-xlarge: 50px;
+		--font-xxlarge: 60px;
+	}
+
+	@include media(">desktopXLarge") {
+		--font-xxsmall: 16px;
+		--font-xsmall: 18px;
+		--font-small: 20px;
+		--font-medium: 30px;
+		--font-large: 37px;
+		--font-xlarge: 50px;
+		--font-xxlarge: 60px;
+	}
+}
+
+.font-xxlarge {
+	font-size: var(--font-xxlarge);
+}
+
+.font-xlarge {
+	font-size: var(--font-xlarge);
+}
+
+.font-large {
+	font-size: var(--font-large);
+}
+
+.font-medium {
+	font-size: var(--font-medium);
+}
+
+.font-small {
+	font-size: var(--font-small);
+}
+
+.font-xsmall {
+	font-size: var(--font-xsmall);
+}
+
+.font-xxsmall {
+	font-size: var(--font-xxsmall);
+}
+
+// ===============================================================
+// MIXINS AND FUNCTIONS
+// ===============================================================
+
+// Constrain mixing used for site wrappers
+@mixin constrain($small: false, $large: false) {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+
+	@include media(">phone") {
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+	}
+
+	@include media(">tablet") {
+		padding-left: 6rem;
+		padding-right: 6rem;
+		max-width: 1200px;
+	}
+
+	@if $small {
+		// small container
+		@include media(">desktopLarge") {
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0;
+			max-width: 700px;
+		}
+
+		@include media(">desktopXLarge") {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 800px;
+		}
+	} @else if $large {
+		// large container
+		@include media(">desktopXLarge") {
+			padding: 0;
+		}
+
+		@include media(">desktopXXLarge") {
+			max-width: 1000px;
+		}
+	} @else {
+		// default container
+		@include media(">desktopXLarge") {
+			padding: 0;
+		}
+
+		@include media(">desktopXXLarge") {
+			max-width: 1300px;
+		}
+	}
+}
+
+@mixin box-shadow-small {
+	box-shadow: 0 10px 25px 5px rgba(black, 0.1);
+}
+
+@mixin box-shadow-large {
+	box-shadow: 0 10px 50px 5px rgba(black, 0.1);
+}
+
+@mixin transition($time: 0.2s) {
+	transition: all $time ease-out;
+}
+
+// Use px values for width and height
+@mixin ratio-box($width, $height) {
+	height: 0;
+	overflow: hidden;
+	padding-top: $width / $height * 100%;
+	position: relative;
+}
+
+// Absolute center and element
+@mixin absolute-center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+}

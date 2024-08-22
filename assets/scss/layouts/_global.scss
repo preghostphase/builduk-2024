@@ -1,0 +1,381 @@
+// ===============================================================
+// Layout for overall site structure with sidebar
+// ===============================================================
+
+.footer,
+#primary {
+	width: 100%;
+}
+
+// ===============================================================
+// Content layout and styling from user input
+// ===============================================================
+
+.content__wrapper {
+	margin-bottom: 4rem;
+
+	@include media(">desktop") {
+		margin-bottom: 6rem;
+	}
+}
+
+.wp-block-column {
+	// Set vertical rhythm for column content
+	> *:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+}
+
+// Styling for any content output from the wordpress editor
+.user-content {
+	// Container for every element
+	&.content__wrapper {
+		> *:not(.page-builder) {
+			@include constrain($small: true);
+		}
+	}
+
+	&.content__wrapper--wide {
+		> *:not(.page-builder) {
+			@include constrain($large: true);
+		}
+	}
+
+	&.user-content--white-text {
+		> *:not(.page-builder) {
+			color: $color-white;
+		}
+	}
+
+	// Set vertical rhythm for page content
+	> *:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+
+	a:not(.button):not(.home-cta__grid-item):not(.cookie-banner__text-policy-link):not(.local-video):not(.embedded-video):not(#ccc-icon):not(#ccc-close):not(#ccc-recommended-settings):not(#ccc-reject-settings):not(.downloads-block__item):not(.socialicon) {
+		text-decoration: none;
+		color: $color-primary;
+		font-weight: inherit;
+		border-bottom: 2px solid transparent;
+		@include transition;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background-color: $color-secondary;
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+			color: $color-secondary;
+			&::before {
+				width: 100%;
+			}
+		}
+
+		u {
+			text-decoration: none;
+		}
+	}
+
+	p + h2 {
+		margin-top: 4rem;
+	}
+
+	h1 {
+		font-weight: 700;
+	}
+
+	h2 {
+		font-weight: 700;
+	}
+
+	h3 {
+		font-weight: 700;
+	}
+
+	h4 {
+		font-weight: 700;
+	}
+
+	h5 {
+		font-weight: 700;
+	}
+
+	p {
+		line-height: 1.6;
+	}
+
+	ul,
+	ol {
+		font-size: var(--font-xsmall);
+		margin-top: 4rem;
+		margin-bottom: 4rem !important;
+
+		li {
+			position: relative;
+			margin-bottom: 1.25rem;
+			padding-bottom: 1.25rem;
+			margin-left: 2rem;
+			padding-left: 1rem;
+			border-bottom: 1px solid rgba(black, 0.1);
+
+			&::marker {
+				font-weight: 700;
+				color: $color-primary;
+			}
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	em {
+		border: 0;
+	}
+
+	iframe {
+		width: 100%;
+	}
+
+	blockquote {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+	}
+
+	.wp-block-image {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+
+		@include media(">desktopLarge") {
+			max-width: 850px;
+		}
+		@include media(">desktopXLarge") {
+			max-width: 950px;
+		}
+
+		figcaption {
+			color: $color-secondary;
+			font-size: var(--font-xxsmall);
+			text-align: center;
+		}
+
+		img {
+			margin: 0 auto;
+		}
+
+		.alignleft {
+			float: left;
+			margin: 0.5rem 3rem 0.5rem 0;
+		}
+
+		.alignright {
+			float: right;
+			margin: 0.5rem 0 0.5rem 3rem;
+		}
+	}
+
+	.wp-block-gallery {
+		.blocks-gallery-grid {
+			display: grid;
+			grid-gap: 3rem;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+
+		.blocks-gallery-item {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+
+		a {
+			border: 0;
+		}
+	}
+
+	.wp-block-quote {
+		position: relative;
+		border: 0;
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+		padding: 2.5rem;
+		background: $color-secondary;
+		margin: 0 15px;
+		width: auto;
+
+		@include media(">desktopLarge") {
+			max-width: 850px;
+		}
+		@include media(">desktopXLarge") {
+			max-width: 950px;
+		}
+
+		p {
+			color: $color-white;
+			// padding: 2.5rem;
+			font-size: var(--font-small);
+			z-index: 1;
+			line-height: 1.5;
+
+			&:not(:last-child) {
+				margin-bottom: 1.25rem;
+			}
+		}
+
+		cite {
+			display: inline-block;
+			font-weight: 400;
+		}
+
+		&.light {
+			background: $color-grey-light;
+
+			&::before {
+				content: "\201C";
+				position: absolute;
+				top: 1rem;
+				left: -2rem;
+				display: block;
+				line-height: 1;
+				font-family: Georgia, "Times New Roman", Times, serif;
+				font-size: 200px;
+				color: $color-primary;
+			}
+			p {
+				color: $color-secondary;
+				font-size: var(--font-xsmall);
+				padding-left: 5rem;
+			}
+
+			cite {
+				padding-left: 5rem;
+			}
+		}
+	}
+
+	.wp-block-quote.is-style-large {
+		padding: 0;
+
+		p {
+			padding: 3.5rem;
+			font-size: var(--font-medium);
+			font-style: normal;
+		}
+
+		cite {
+			padding-left: 3.5rem;
+			font-weight: 700;
+
+			@include media(">desktopLarge") {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.handorgel {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+	}
+
+	.wp-block-column:not(:first-child) {
+		margin-left: 4em;
+	}
+
+	.wp-block-embed__wrapper {
+		position: relative;
+		height: 250px;
+
+		@include media(">tablet") {
+			height: 450px;
+		}
+
+		iframe {
+			height: 100%;
+		}
+	}
+
+	.wp-block-video,
+	.wp-block-embed {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+
+		@include media(">desktopLarge") {
+			max-width: 850px;
+		}
+		@include media(">desktopXLarge") {
+			max-width: 950px;
+		}
+	}
+
+	.jobs-block {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+	}
+}
+
+// utility classes
+
+.underline {
+	width: calc(100%);
+	background-image: linear-gradient(transparent calc(100% - 50px), $color-primary 0px);
+	background-repeat: no-repeat;
+	background-size: 0% 7%;
+	background-position: left bottom;
+	transition: background-size 0.5s;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		background-size: 100% 7%;
+	}
+}
+
+
+// animations
+
+.__animate,
+.__animatenow {
+    opacity: 0;
+    @media(min-width: 992px){
+      transform: translateY(80px);
+    }
+	&.__animatein {
+        transform: translateY(0);
+        transition:all 500ms cubic-bezier(0.75, 0, 0.25, 1);
+        opacity:1
+	}
+}
+.__animateleft {
+    transform: translateX(-100px);
+    opacity: 0;
+    &.__animatein {
+        transform: translateX(0);
+        transition:all 500ms cubic-bezier(0.75, 0, 0.25, 1);
+        opacity:1
+	}
+}
+.__animateright {
+    transform: translateX(100px);
+    opacity: 0;
+    &.__animatein {
+        transform: translateX(0);
+        transition:all 500ms cubic-bezier(0.75, 0, 0.25, 1);
+        opacity:1
+	}
+}
+.__animatefade {
+    opacity: 0;
+    &.__animatein {
+        transition:all 500ms cubic-bezier(0.75, 0, 0.25, 1);
+        opacity:1
+	}
+}
+
+
+

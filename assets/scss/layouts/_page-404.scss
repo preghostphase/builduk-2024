@@ -1,0 +1,61 @@
+// ===============================================================
+// 404 page
+// ===============================================================
+
+.errorpage__wrapper {
+	@include constrain();
+	margin-bottom: 4rem;
+}
+
+.errorpage__search {
+	@include media(">desktop") {
+		max-width: 400px;
+	}
+
+	.search {
+		display: flex;
+		font-size: calc(1rem + 1vmin);
+
+		input {
+			padding: 0 1rem;
+			width: inherit;
+			background: $color-white;
+			border: 0;
+			border-bottom: 2px solid #808080;
+			width: 150px;
+			transition: all 0.2s ease-in;
+
+			&:focus {
+				width: 100% !important;
+				background: $color-white;
+				outline: none;
+				border-bottom: 2px solid $color-secondary;
+			}
+
+			&:hover {
+				width: 170px;
+				outline: none;
+				border-bottom: 2px solid $color-secondary;
+			}
+		}
+
+		button {
+			border: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem;
+			background: $color-white;
+			min-width: 0;
+		}
+
+		.svg-wrapper {
+			width: 20px;
+			height: 20px;
+		}
+
+		svg {
+			fill: $color-secondary !important;
+		}
+	}
+}

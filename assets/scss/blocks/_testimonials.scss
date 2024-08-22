@@ -1,0 +1,92 @@
+// ===============================================================
+// Custom testimonial block
+// ===============================================================
+
+blockquote[id^="testimonial-"] {
+	margin-bottom: 50px!important;
+	.testimonial__wrapper {
+		background: $color-grey-light;
+		padding: 8rem 2rem 2rem 2rem;
+		position: relative;
+
+		@include media(">desktopLarge") {
+			margin: 0;
+			width: auto;
+			padding: 3.5rem 3.5rem 3.5rem 7.5rem;
+			max-width: 850px;
+		}
+
+		@include media(">desktopXLarge") {
+			max-width: 950px;
+		}
+
+		&::before {
+			content: "\201C";
+			position: absolute;
+			top: 1rem;
+			left: 2rem;
+			display: block;
+			line-height: 1;
+			font-family: Georgia, "Times New Roman", Times, serif;
+			font-size: 150px;
+			color: $color-primary;
+
+			@include media(">desktopLarge") {
+				font-size: 200px;
+				left: -2rem;
+			}
+		}
+	}
+
+	.testimonial__body {
+		font-size: var(--font-xsmall);
+		z-index: 1;
+		line-height: 1.5;
+		color: $color-secondary;
+		margin-bottom: 2rem;
+
+		// Set vertical rhythm for testimonials content
+		> :not(:last-child) {
+			margin-top: 0 !important;
+			margin-bottom: 2rem !important;
+		}
+	}
+
+	.testimonial__footer {
+		font-weight: 400;
+		color: $color-secondary;
+		font-size: var(--font-xxsmall);
+	}
+
+	// Dark testimonial theme
+	&.testimonial--dark {
+		.testimonial__wrapper {
+			background: $color-secondary;
+		}
+
+		.testimonial__body,
+		.testimonial__footer {
+			color: $color-white;
+		}
+	}
+
+	// Alternative alignment
+	&.testimonial--right {
+		.testimonial__wrapper {
+			@include media(">desktopLarge") {
+				padding: 3.5rem 7.5rem 3.5rem 3.5rem;
+			}
+
+			// Different side for quote
+			&::before {
+				content: "\201D";
+				left: auto;
+				right: 2rem;
+
+				@include media(">desktopLarge") {
+					right: -2.5rem;
+				}
+			}
+		}
+	}
+}

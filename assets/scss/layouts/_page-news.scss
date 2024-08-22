@@ -1,0 +1,80 @@
+// ===============================================================
+// Layout for post archive page
+// ===============================================================
+
+.news {
+    width: 100%;
+	height: auto;
+	position: relative;
+
+	&__wrapper {
+		@include constrain();
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+
+    &__back {
+        display: block;
+        width: fit-content;
+        height: auto;
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    &__title {
+        margin-bottom: 1.5rem;
+    }
+    
+    &__sticky {
+        margin-bottom: 1.5rem;
+
+        @include media(">tablet"){
+            margin-bottom: 3.5rem;
+        }
+    }
+
+    &__filters {
+        margin-bottom: 1.5rem;
+
+        @include media(">tablet"){
+            margin-bottom: 3.5rem;
+        }
+
+        @include media(">desktop"){
+            margin-bottom: 5rem;
+        }
+
+        h4 {
+            margin-bottom: 1.5rem;
+        }
+
+        &-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+
+    &__articles {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 0 50px 0;
+
+        @include media(">tablet"){
+            grid-template-columns: 1fr 1fr;
+            padding: 0 0 75px 0;
+        }
+
+        @include media(">desktop"){
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 0 0 100px 0;
+        }
+    }
+
+}

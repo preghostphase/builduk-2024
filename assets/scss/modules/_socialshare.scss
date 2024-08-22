@@ -1,0 +1,125 @@
+.socialShare {
+	position: relative;
+	display: inline-block;
+	.socialShareToggle {
+		background-color: $color-secondary;
+		color: $color-white;
+		position: relative;
+
+		&.active {
+			background-color: $color-primary;
+			color: $color-white;
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				width: 15px;
+				height: 2px;
+				background-color:white;
+				top: 23px;
+				box-shadow: 0 0 2px 0 #ccc;
+			}
+			
+			&::before {
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				transform: rotate(45deg);
+				right: 10px;
+			}
+			&::after {
+				-webkit-transform: rotate(-45deg);
+				-moz-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				right: 10px;
+			}
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $color-primary;
+			color: $color-white;
+		}
+	}
+	.socialShareContent {
+		display: none;
+		padding-top: 10px;
+
+		@include media(">phone"){
+			position: absolute;
+			top: -2px;
+			left: 110%;
+			padding-top: 0;
+		}
+
+
+	> div {
+		display: flex;
+			a {
+				width: auto;
+				color: $color-white;
+				background-color: $color-secondary;
+				height: auto;
+				padding: 10px;
+				display: inline-flex;
+				border-radius: 10px;
+				margin-right: 10px;
+				transition: all 0.3s ease;
+
+				&:last-of-type {
+					margin-right: 0;
+				}
+
+				&::before,
+				&::after {
+					content: none;
+				}
+
+				&:hover,
+				&:focus {
+					transform: translateY(-6px);
+					background-color: $color-primary;
+
+					&::before,
+					&::after {
+						content: none;
+					}
+				}
+
+				.svg-wrapper {
+					width: 30px;
+					height: 30px;
+				}
+
+				&.socialicon {
+					&.socialicon--facebook {
+						.svg-wrapper svg {
+							// fill: #1877f2;
+							fill: $color-white;
+						}
+					}
+					&.socialicon--linkedin {
+						.svg-wrapper svg {
+							// fill: #0a66c2;
+							fill: $color-white;
+						}
+					}
+					&.socialicon--instagram {
+						.svg-wrapper svg {
+							// fill: #c32aa3;
+							fill: $color-white;
+						}
+					}
+					&.socialicon--twitter {
+						.svg-wrapper svg {
+							// fill: #1da1f2;
+							fill: $color-white;
+						}
+					}
+				}
+
+			}
+		}
+	}
+}
+

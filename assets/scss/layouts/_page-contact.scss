@@ -1,0 +1,109 @@
+// ===============================================================
+// Layout for contact page template
+// ===============================================================
+
+.contact {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+    &__wrapper {
+        @include constrain();
+        width: 100%;
+        height: auto;
+        position: relative;
+
+        @include media(">tablet"){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @include media(">desktop"){
+            gap: 50px;
+        }
+
+
+        @include media(">desktopLarge"){
+            gap: 80px;
+        }
+    }
+
+    &__info {
+        &-map {
+            margin-top: 15px;
+        }
+    }
+
+    &__form {
+        background-color: $color-secondary;
+        width: 100%;
+        height: fit-content;
+        position: relative;
+        padding: 15px;
+
+        @include media(">tablet"){
+           padding: 30px;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, label, .nf-form-fields-required {
+            color: $color-white;
+        }
+
+        .nf-before-form-content {
+            margin-bottom: 15px;
+        }
+
+        .nf-form-content {
+            padding: 0;
+        }
+
+        .nf-form-content input:not([type=button]),
+        .nf-form-content textarea {
+            background-color: transparent;
+            border: 2px solid $color-white;
+            color: $color-white;
+
+            &::placeholder {
+                color: $color-white;
+            }
+
+            &:focus {
+                border-color: $color-primary;
+                color: $color-white;
+                background-color: transparent;
+            }
+        }
+
+        .nf-form-content input:not([type=button]):not([type=text]):not([type=email]):not([type=tel]){
+            cursor: pointer;
+            min-width: 100px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 15px;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: var(--font-xsmall);
+            line-height: 1;
+            text-align: center;
+            font-weight: 700;
+            color: $color-white;
+            background: $color-primary;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            @include transition();
+        
+            @include media(">phone") {
+                font-size: var(--font-small);
+            }
+        
+            &:hover,
+            &:focus {
+                background: $color-white;
+                color: $color-primary;
+            }
+        }
+    }
+}

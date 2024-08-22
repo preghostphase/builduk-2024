@@ -1,0 +1,36 @@
+// ===============================================================
+// Custom contact buttons
+// ===============================================================
+
+div[id^="contact-buttons-"] {
+	.contact-buttons__wrapper {
+		display: block;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.contact-buttons__title {
+		flex: 0 0 100%;
+		margin-bottom: 0.5rem;
+	}
+
+	.button {
+		padding: 1rem;
+		margin-right: 1.5rem;
+		color: $color-secondary;
+		background: none;
+	}
+
+	.svg-wrapper {
+		width: 20px;
+		height: 20px;
+		margin-left: 0;
+		margin-right: 1rem;
+
+		svg {
+			fill: $color-primary;
+			@include transition();
+		}
+	}
+}

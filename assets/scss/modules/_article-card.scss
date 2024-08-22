@@ -1,0 +1,167 @@
+// ===============================================================
+// Article card
+// ===============================================================
+
+.article-card {
+	position: relative;
+	transition: all 0.3s ease;
+	&::before{
+		content:'';
+		position: absolute;
+		bottom:0;
+		left:0;
+		width:0%;
+		height: 3px;
+		background: $color-primary;
+		transition: all 0.3s ease;
+	}
+
+	&:hover,
+	&:focus {
+		@include media(">desktop") {
+			transform: translateY(-5px);
+		}
+		&::before {
+			width: 100%;
+		}
+		.underline {
+			background-size: 0% 0%;
+		}
+	}
+}
+
+.article-card__image {
+	position: relative;
+	height: 250px;
+
+	@include media(">tablet"){
+		height: 275px;
+	}
+
+	@include media(">desktopLarge"){
+		height: 325px;
+	}
+
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.article-card__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.article-card__content {
+	flex: 1;
+	padding: 2.5rem;
+	background: $color-secondary;
+	color: $color-white;
+	border-bottom: 12px solid $color-primary;
+}
+
+.article-card__excerpt {
+	margin-top: 1rem;
+
+	// Hide the excerpt on the homepage
+	body.home & {
+		display: none;
+	}
+}
+
+.article-card__date {
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	left: 15px;
+	background-color: $color-primary;
+	color: $color-white;
+	font-size: var(--small);
+	font-family: $font-primary;
+	font-weight: 700;
+	padding: 11px 25px;
+	border-radius: 20px;
+}
+
+.article-card__title {
+	color: $color-white;
+	line-height: 1.25;
+	font-size: var(--font-medium);
+	font-weight: 400;
+
+	b,
+	strong {
+		font-weight: 700;
+		color: $color-primary;
+	}
+}
+
+// Alternative styling for sticky article
+.sticky-article {
+	.article-card {
+		&::before {
+			content: none;
+		}
+	}
+	.article-card__link {
+		border-bottom: 10px solid $color-primary;
+		@include media(">tablet"){
+			display: flex;
+			flex-direction: row;
+		}
+	}
+	&:hover,
+	&:focus {
+		.article-card {
+			transform: none;
+		}
+		.underline {
+			background-size: 100% 7%;
+		}
+	}
+
+	.article-card__content {
+		border: none;
+		width: 100%;
+		@include media(">tablet") {
+			width: 40%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	.article-card__image {
+		width: 100%;
+		height: 250px;
+
+		@include media(">tablet"){
+			height: 400px;
+			width: 60%;
+		}
+	
+		@include media(">desktopLarge"){
+			height: 450px;
+		}
+	}
+
+	.article-card__title {
+		color: $color-white;
+		font-size: var(--font-large);
+	}
+
+	.article-card__excerpt .button {
+		margin-top: 1.5rem;
+	}
+
+	.article-card__excerpt p {
+		font-size: var(--font-small);
+	}
+}
