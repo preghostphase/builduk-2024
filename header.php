@@ -14,8 +14,8 @@
 
 	<style>
 		:root {
-			--theme-primary: <?php the_field( 'primary_colour', 'option' ); ?>;
-			--theme-secondary: <?php the_field( 'secondary_colour', 'option' ); ?>;
+			--theme-primary: <?php echo get_field( 'primary_colour', 'option' ); ?>;
+			--theme-secondary: <?php echo get_field( 'secondary_colour', 'option' ); ?>;
 		}
 	</style>
 
@@ -33,6 +33,30 @@
 	<button id="scrollToTop" class="scrollToTop hide"><?php load_inline_svg('up')?></button>
 
 	<a class="skip-link screen-reader-text" href="#primary">Skip to contents</a>
+
+	<?php
+	$announcmentBarText = get_field( 'announcement_banner_text', 'option' ); 
+	$announcmentBarUrl = get_field( 'announcement_banner_link', 'option' ); 
+	$announcmentBarColour = get_field('announcement_bar_colour', 'option');
+	$announcementNewTab = get_field('open_link_in_new_tab', 'option');
+	?>
+
+	<?php if($announcmentBarText) : ?>
+		<section class="announcement" style="background-color: <?php echo $announcmentBarColour ? $announcmentBarColour : get_field( 'primary_colour', 'option' ); ?>">
+			<div class="announcement__wrapper">
+				<?php if($announcmentBarUrl && $announcmentBarText) : ?>
+					<a class="announcement__link" href="<?php echo $announcmentBarUrl; ?>" <?php echo $announcementNewTab ? 'target="_blank"' : ''; ?>>
+						<?php echo $announcmentBarText; ?>
+						<?php load_inline_svg('right')?>
+					</a>
+				<?php elseif ($announcmentBarText && !$announcmentBarUrl) : ?>
+					<div class="announcement__text">
+						<?php echo $announcmentBarText; ?>
+					</div>
+				<?php endif; ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
 	<header class="header">
 		<!-- Mobile headers -->

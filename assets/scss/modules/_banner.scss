@@ -26,9 +26,9 @@
 	}
 
 	&.banner--has-image {
-		padding: 200px 0;
+		padding: 100px 0;
 		@include media(">desktop"){
-			min-height: 522px;
+			min-height: 300px;
 		}
 	}
 }
@@ -56,6 +56,16 @@
 		z-index: 1;
 	}
 
+	&-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		opacity: 0.7;
+	}
+
 	img {
 		position: absolute;
 		top: 0;
@@ -63,13 +73,14 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		z-index: 1;
 	}
 }
 
 .banner__wrapper {
 	@include constrain;
 	position: relative;
-	z-index: 1;
+	z-index: 3;
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -85,12 +96,13 @@
 		color: $color-white;
 		line-height: 1.1;
 		transition: all 0.1s ease;
+		text-transform: uppercase;
 	}
 
 	p {
 		display: none;
 		color: $color-white;
-		font-size: var(--font-medium);
+		font-size: var(--font-small);
 
 		@include media(">desktop") {
 			display: block;

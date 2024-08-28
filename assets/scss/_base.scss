@@ -196,7 +196,7 @@ select {
 // ===============================================================
 
 h1 {
-	font-weight: 700;
+	font-weight: 800;
 	line-height: 1.25;
 	font-size: var(--font-xxlarge);
 }
@@ -256,26 +256,27 @@ button,
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	border: none;
-	border-radius: 15px;
+	border: 3px solid $color-primary;
 	padding: 15px 30px;
 	text-decoration: none;
+	text-transform: uppercase;
 	font-size: var(--font-xsmall);
 	line-height: 1;
 	text-align: center;
-	font-weight: 700;
+	font-weight: 800;
 	color: $color-white;
-	background: $color-primary;
+	background: $color-secondary;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	@include transition();
+	@include transition;
 
 	@include media(">phone") {
 		font-size: var(--font-small);
 	}
 
-	&:hover {
-		background: $color-secondary;
+	&:hover,
+	&:focus {
+		background: $color-primary;
 		color: $color-white;
 
 		.svg-wrapper svg {
@@ -293,28 +294,6 @@ button,
 			@include transition();
 		}
 	}
-
-	&.button--white-hover {
-		&:hover,
-		&:focus {
-			background-color: $color-white;
-			color: $color-primary;
-		}
-	}
-
-	&.button--hollow {
-		border: 2px solid $color-white;
-		background-color: none;
-
-		&:hover,
-		&:focus {
-			background-color: $color-secondary;
-			border-color: $color-secondary;
-			color: $color-white;
-		}
-	}
-
-	
 }
 
 // Magnific Popup

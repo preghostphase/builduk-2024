@@ -28,8 +28,13 @@ require get_template_directory() . '/includes/acf-blocks.php';
 require get_template_directory() . '/includes/custom-login.php';
 
 // Custom post types
-require get_template_directory() . '/includes/cpt/events.php';
-require get_template_directory() . '/includes/cpt/locations.php';
+// require get_template_directory() . '/includes/cpt/events.php';
+// require get_template_directory() . '/includes/cpt/locations.php';
+require get_template_directory() . '/includes/cpt/members.php';
+require get_template_directory() . '/includes/cpt/information.php';
 
 // Google Maps
 require get_template_directory() . '/includes/google-maps.php';
+
+// Ajax Functions
+require get_template_directory() . '/includes/ajax-functions.php';

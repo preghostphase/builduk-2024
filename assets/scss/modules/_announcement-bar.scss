@@ -1,0 +1,46 @@
+// ===============================================================
+// Announcement Bar styling
+// ===============================================================
+
+.announcement {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: $color-primary;
+    padding: 15px 0;
+
+    &__wrapper {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 0 15px;
+
+        @include media(">desktop"){
+            padding: 0 30px;
+        }
+    }
+
+    &__link,
+    &__text {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        color: #fff;
+        text-align: center;
+        font-family: $font-primary;
+        font-size: --var(--font-small);
+        font-weight: 700;
+
+        .svg-wrapper {
+            width: 15px;
+            height: 15px;
+
+            svg {
+                fill: #fff;
+            }
+        }
+    }
+}

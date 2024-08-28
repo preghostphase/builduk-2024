@@ -23,7 +23,7 @@
 // }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
-@import url("https://use.typekit.net/cmy3rqg.css");
+@import url("https://use.typekit.net/dnc2zig.css");
 
 // ===============================================================
 // SASS VARIABLES
@@ -69,7 +69,7 @@ $z-index-menu: 30;
 $z-index-modal: 999;
 
 // Fonts
-$font-primary: "museo-slab", "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-primary: "proxima-nova", "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-secondary: "interface", Helvetica, Arial, sans-serif;
 
 // ===============================================================
@@ -212,7 +212,7 @@ $font-secondary: "interface", Helvetica, Arial, sans-serif;
 }
 
 @mixin transition($time: 0.2s) {
-	transition: all $time ease-out;
+	transition: all $time ease;
 }
 
 // Use px values for width and height

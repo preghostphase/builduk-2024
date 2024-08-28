@@ -31,12 +31,15 @@
 @import "./layouts/page-post";
 @import "./layouts/page-404";
 @import "./layouts/page-news";
+@import "./layouts/page-members";
+@import "./layouts/page-information";
 @import "./layouts/page-contact";
 @import "./layouts/page-builder";
 
 // ===============================================================
 // Modules (use for reusable modules)
 // ===============================================================
+@import "./modules/announcement-bar";
 @import "./modules/ninja-form";
 @import "./modules/social-block";
 @import "./modules/article-card";

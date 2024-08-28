@@ -4,9 +4,14 @@
 <main id="primary" class="news">
 	<div class="news__wrapper">
 
-		<a href="<?php echo esc_url(home_url('/news')); ?>" class="news__back button">Back to News Archive</a>
+		<?php if ( get_post_type( get_the_ID() ) == 'post' ) : ?>
 
-		<?php get_template_part('templates/parts/blog-listings'); ?>
+			<a href="<?php echo esc_url(home_url('/news')); ?>" class="news__back button">Back to News Archive</a>
+
+			<?php get_template_part('templates/parts/blog-listings'); ?>
+
+		<?php endif; ?>
+
 	</div>
 </main>
 

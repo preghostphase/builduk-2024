@@ -10,14 +10,17 @@
 .social-block__list {
 	list-style: none;
 	display: flex;
-	margin-bottom: 2rem;
+	gap: 15px;
 }
 
 .social-block__list-link {
-	margin-right: 4rem;
+	width: 35px;
+	height: 35px;
+	display: block;
+
 	.svg-wrapper {
-		width: 35px;
-		height: 35px;
+		width: 100%;
+		height: 100%;
 	}
 
 	svg {
@@ -38,16 +41,10 @@
 		margin-bottom: 0;
 		padding: 0;
 		font-size: var(--font-xsmall);
-		text-align: center;
 	}
 
 	.social-block__title {
 		display: none;
-	}
-
-	.social-block__list {
-		justify-content: center;
-		margin-bottom: 3vmin;
 	}
 
 	.social-block__list-link {

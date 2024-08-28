@@ -1,0 +1,319 @@
+// ===============================================================
+// Layout for information archive page
+// ===============================================================
+
+.information {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-bottom: 5rem;
+
+    &__wrapper {
+        @include constrain();
+    }
+
+    &__nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 1.5rem;
+
+        @include media(">phone"){
+            margin-bottom: 2.5rem;
+        }
+
+        @include media(">tablet"){
+            margin-bottom: 3.5rem;
+        }
+
+        @include media(">desktop"){
+            margin-bottom: 4.5rem;
+        }
+
+        &-grid {
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: grid;
+            gap: 13px;
+            grid-template-columns: 1fr;
+
+            @include media(">phone"){
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include media(">tablet"){
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            &-item {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 15px;
+                transition: all 0.3s ease;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+
+                &:hover,
+                &:focus {
+                    background-color: $color-white!important;
+                    .information__nav-grid-item-image img {
+                        transform: scale(1.05);
+                    }
+                    .information__nav-grid-item-title {
+                        color: inherit!important;
+                    }
+                }
+
+                &.active {
+                    background-color: $color-white!important;
+                    .information__nav-grid-item-image img {
+                        transform: scale(1.05);
+                    }
+                    .information__nav-grid-item-title {
+                        color: inherit!important;
+                    }
+                }
+
+                &-image {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    overflow: hidden;
+
+                    &-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0.7;
+                        z-index: 2;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: all 0.3s ease;
+                    }
+                }
+
+                &-title {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 3;
+                    font-size: var(--font-xxsmall);
+                    margin: 0;
+                    color: $color-white!important;
+                    text-transform: uppercase;
+                    transition: all 0.3s ease;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    &__categories {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 1.5rem;
+
+        @include media(">phone"){
+            margin-bottom: 2.5rem;
+        }
+
+        @include media(">tablet"){
+            margin-bottom: 3.5rem;
+        }
+
+        @include media(">desktop"){
+            margin-bottom: 4.5rem;
+        }
+
+        &-grid {
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr;
+
+            @include media(">phone"){
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include media(">tablet"){
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 25px;
+            }
+
+            &-item {
+                width: 100%;
+                min-height: 200px;
+                height: auto;
+                position: relative;
+                padding: 15px;
+                transition: all 0.3s ease;
+                border-top-right-radius: 80px;
+                overflow: hidden;
+                display: flex;
+                align-items: flex-end;
+
+                &:hover,
+                &:focus {
+                    .information__categories-grid-item-image img {
+                        transform: scale(1.05);
+                    }
+                }
+
+                &-image {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    overflow: hidden;
+
+                    &-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0.7;
+                        z-index: 2;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: all 0.3s ease;
+                    }
+                }
+
+                &-title {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 3;
+                    font-size: var(--font-medium);
+                    margin: 0;
+                    color: $color-white;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+    }
+
+    &__items {
+        width: 100%;
+        height: auto;
+        position: relative;
+
+        &-grid {
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr;
+
+            @include media(">phone"){
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include media(">desktop"){
+                gap: 25px;
+            }
+
+            @include media(">desktop"){
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            &-item {
+                width: 100%;
+                height: auto;
+                position: relative;
+                background: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                &:hover,
+                &:focus {
+                    .information__items-grid-item-main {
+                        transform: translateY(-10px);
+                    }
+                }
+
+                &-main {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    margin-bottom: 10px;
+                    padding: 15px 0;
+                    -webkit-box-shadow: 0px 0px 40px -26px rgba(0,0,0,0.75);
+                    -moz-box-shadow: 0px 0px 40px -26px rgba(0,0,0,0.75);
+                    box-shadow: 0px 0px 40px -26px rgba(0,0,0,0.75);
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                    border-top-right-radius: 80px;
+                }
+
+                &-title {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 3;
+                    font-size: var(--font-small);
+                    color: $color-white;
+                    transition: all 0.3s ease;
+                    padding: 0 15px;
+                    margin-bottom: 15px;
+                }
+
+                &-excerpt {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 3;
+                    font-size: var(--font-small);
+                    color: $color-white;
+                    transition: all 0.3s ease;
+                    padding: 0 15px;
+                    margin: 0;
+
+                    > :last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                &-text {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 3;
+                    font-size: var(--font-xxsmall);
+                    color: $color-primary;
+                    transition: all 0.3s ease;
+                    padding: 5px 15px;
+                    background: none;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+}
