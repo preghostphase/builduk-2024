@@ -41,8 +41,72 @@
 
     </div>
 
+    <div class="information__search">
+        <div class="information__search-text">
+            <h3>Can't find what you're looking for?</h3>
+            <p>Search our Information Bank</p>
+        </div>
+        <form class="information__search-form">
+            <input type="search" placeholder="Search"/>
+            <button type="submit"><span class="sr-only">Search Button</span><?php load_inline_svg('search')?></button>
+        </form>
+        <div class="information__search-results">
 
- 
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('.information__search-form');
+            var searchInput = form.querySelector('input[type="search"]');
+            var resultsContainer = document.querySelector('.information__search-results');
+            var debounceTimer;
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                searchInformation();
+            });
+
+            // Trigger search on input change with debounce
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    searchInformation();
+                }, 500); // 500ms debounce
+            });
+
+            function searchInformation() {
+                var searchQuery = searchInput.value.trim();
+
+                // If the search input is empty, clear the results and return
+                if (searchQuery === '') {
+                    resultsContainer.innerHTML = '';
+                    return;
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '<?php echo admin_url('admin-ajax.php'); ?>', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 400) {
+                        resultsContainer.innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Error: Could not load search results.');
+                    }
+                };
+
+                xhr.onerror = function() {
+                    console.error('Request failed.');
+                };
+
+                xhr.send('action=search_information&query=' + encodeURIComponent(searchQuery));
+            }
+        });
+
+    </script>
+
+
     </div>
 
 </main>

@@ -27,3 +27,4 @@ function lighten_color($color, $percent) {
 
     return sprintf("#%02x%02x%02x", $r, $g, $b);
 }
+

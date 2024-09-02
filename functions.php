@@ -38,3 +38,6 @@ require get_template_directory() . '/includes/google-maps.php';
 
 // Ajax Functions
 require get_template_directory() . '/includes/ajax-functions.php';
+
+// Stylesheet cache fixes
+require get_template_directory() . '/includes/stylesheet-caching.php';

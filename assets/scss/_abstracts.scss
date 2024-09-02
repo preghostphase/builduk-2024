@@ -189,7 +189,7 @@ $font-secondary: "interface", Helvetica, Arial, sans-serif;
 		}
 
 		@include media(">desktopXXLarge") {
-			max-width: 1000px;
+			max-width: 1500px;
 		}
 	} @else {
 		// default container

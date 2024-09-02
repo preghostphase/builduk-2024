@@ -13,7 +13,7 @@
         @include constrain();
     }
 
-    &__filter {
+    &__filters {
         width: 100%;
         height: auto;
         position: relative;
@@ -22,6 +22,7 @@
             width: 100%;
             height: auto;
             position: relative;
+            margin-bottom: 1.5rem;
 
             &-categories {
                 display: flex;
@@ -30,13 +31,57 @@
                 margin-bottom: 15px;
 
                 label {
-                    padding: 15px;
-                    background-color: $color-secondary;
-                    border: 3px solid $color-primary;
-                    color: $color-white;
+                    padding: 15px 0px 15px 35px;
+                    border-bottom: 2px solid $color-secondary;
+                    color: $color-secondary;
                     font-size: var(--font-small);
                     font-weight: 700;
                     text-transform: uppercase;
+                    position: relative;
+
+                    input {
+                        position: absolute;
+                        opacity: 0;
+                        cursor: pointer;
+                        height: 0;
+                        width: 0;
+                    }            
+                    
+                    input:checked ~ .checkmark {
+                        background-color: $color-secondary;
+                    }
+
+                    input:checked ~ .checkmark:after {
+                        display: block;
+                    }
+                      
+
+                    /* Create a custom checkbox */
+                    .checkmark {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(0, -50%);
+                        height: 25px;
+                        width: 25px;
+                        background-color: #eee;
+                        border: 2px solid $color-secondary;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                            left: 7px;
+                            top: 0;
+                            width: 8px;
+                            height: 18px;
+                            border: solid white;
+                            border-width: 0 3px 3px 0;
+                            -webkit-transform: rotate(45deg);
+                            -ms-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                        }
+                    }
                 }
             }
 
@@ -44,6 +89,12 @@
                 display: flex;
                 flex-wrap: wrap;
                 gap: 15px;
+
+                .button {
+                    &:focus {
+                        background-color: $color-secondary;
+                    }
+                }
             }
         }
 
@@ -51,6 +102,86 @@
             width: 100%;
             height: auto;
             position: relative;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+
+            @include media(">phone"){
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include media(">tablet"){
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+
+            @include media(">desktop"){
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            @include media(">desktopLarge"){
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            &-info {
+                grid-column: 1/-1;
+                width: 100%;
+            }
+
+            &-item {
+                width: 100%;
+                height: 100px;
+                position: relative;
+                border: 2px solid $color-secondary;
+                background-color: $color-white;
+                padding: 15px;
+
+                &-logo {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    padding: 10px;
+
+                    img {
+                        width: 80%;
+                        height: 100%;
+                        object-fit: contain;
+                        object-position: center;
+                        margin: 0 auto;
+                    }
+                }
+
+                &-keys {
+                    position: absolute;
+                    z-index: 2;
+                    bottom: -10px;
+                    left: 0;
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+
+                    &-item {
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 100%;
+                        overflow: hidden;
+
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            
         }
     }
 
