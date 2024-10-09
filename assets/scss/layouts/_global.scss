@@ -52,7 +52,7 @@
 		margin-bottom: 2rem;
 	}
 
-	a:not(.button):not(.home-cta__grid-item):not(.cookie-banner__text-policy-link):not(.local-video):not(.embedded-video):not(#ccc-icon):not(#ccc-close):not(#ccc-recommended-settings):not(#ccc-reject-settings):not(.downloads-block__item):not(.socialicon) {
+	a:not(.button):not(.home-cta__grid-item):not(.cookie-banner__text-policy-link):not(.local-video):not(.embedded-video):not(#ccc-icon):not(#ccc-close):not(#ccc-recommended-settings):not(#ccc-reject-settings):not(.downloads-block__item):not(.socialicon):not(.team-members-block__item) {
 		text-decoration: none;
 		color: $color-primary;
 		font-weight: inherit;

@@ -5,7 +5,7 @@
 
     <div class="members__wrapper">
 
-    <div class="members__filters">
+    <div class="members__filters" style="display: none;">
         <div class="members__filters-form">
             <form method="GET" id="filter-form">
 
@@ -148,11 +148,7 @@
 
     </script>
 
-
-
-
-
-    <div style="display: none;" class="members__categories">
+    <div  class="members__categories">
 
 
     <?php
@@ -193,8 +189,15 @@
 
     </div>
 
+    <?php
+        // Get all custom taxonomy terms
+        $membershipKeys = get_terms(array(
+            'taxonomy' => 'members_keys',
+            'hide_empty' => true,
+        ));
+    ?>
 
-    <div style="display: none;" class="members__keys">
+    <div class="members__keys">
         <h3>Membership Keys</h3>
 
         <?php
@@ -212,6 +215,12 @@
                 ?>
 
                 <div class="members__keys-grid-item">
+                <div class="members__keys-item-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                        <path fill="<?php echo esc_attr($key_colour); ?>" d="M0 0h20v20H0z" data-name="Rectangle 39"/>
+                        <path fill="#fff" d="m15.572 5.815-1.015-1.323a.608.608 0 0 0-1.014 0L8.65 10.886 6.457 8.014a.608.608 0 0 0-1.014 0L4.432 9.338a1.056 1.056 0 0 0-.209.662 1.055 1.055 0 0 0 .209.661l2.7 3.523 1.01 1.324a.608.608 0 0 0 1.014 0l1.015-1.324 5.4-7.046a1.056 1.056 0 0 0 .209-.662 1.056 1.056 0 0 0-.209-.662" data-name="Path 10"/>
+                    </svg>
+                </div>
 
                     <div class="members__keys-grid-item-main" style="background-color: <?php echo esc_attr($key_colour); ?>;">
                         <h2 class="members__keys-grid-item-main-title"><?php echo esc_html( $categoryKey->name ); ?></h2>

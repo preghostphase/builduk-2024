@@ -31,7 +31,7 @@ $banner_colour = get_field('banner_colour');
 
 ?>
 
-<section class="banner <?php echo esc_attr($banner_class); ?> <?php echo $banner_colour ? 'banner--has-custom-colour' : ''; ?>">
+<section class="banner <?php echo esc_attr($banner_class); ?> <?php echo $banner_colour ? 'banner--has-custom-colour' : ''; ?> <?php echo is_tax('members_category') ? 'banner--members-category' : ''; ?> <?php echo is_tax('information_category') ? 'banner--information-category' : ''; ?>">
 
     <?php if (is_category() && $category_image = get_field('category_featured_image', 'category_' . get_queried_object_id())) : ?>
         <div class="banner__image">
@@ -109,5 +109,75 @@ $banner_colour = get_field('banner_colour');
                 <p>The Build UK Information Bank</p>
             <?php endif; ?>
         </div>
+
+        <?php if(is_tax('members_category')) : ?>
+
+            <div class="members__nav">
+                <div class="members__nav-wrapper">
+                <?php
+                $memberTerms = get_terms([
+                    'taxonomy' => 'members_category',
+                    'hide_empty' => false,
+                ]);
+
+                if ( !empty( $memberTerms ) && !is_wp_error( $memberTerms ) ) : ?>
+                    <div class="members__nav-grid">
+                        <?php foreach ( $memberTerms as $memberTerm ) : 
+                            $currentMemberCategory = get_queried_object();
+                            $currentMemberCategoryName = $currentMemberCategory->name;
+                        ?>
+                            <a href="<?php echo esc_url( get_term_link( $memberTerm ) ); ?>" class="members__nav-grid-item <?php echo $currentMemberCategoryName === $memberTerm->name ? 'active' : ''; ?>">
+
+                                <h2 class="members__nav-grid-item-title"><?php echo esc_html( $memberTerm->name ); ?></h2>
+
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else : ?>
+                    <p><?php esc_html_e( 'No information categories found.', 'text-domain' ); ?></p>
+                <?php endif; ?>
+         
+
+                </div>
+
+            </div>
+        <?php endif; ?>
+
+        <?php if(is_tax('information_category')) : ?>
+            <div class="information__nav">
+                <div class="information__nav-wrapper">
+                <?php
+                    // Get all custom taxonomy terms
+                    $categoryTerms = get_terms(array(
+                        'taxonomy' => 'information_category',
+                        'hide_empty' => true,
+                    ));
+
+                    if ( !empty( $categoryTerms ) && !is_wp_error( $categoryTerms ) ) : ?>
+                        <div class="information__nav-grid">
+                            <?php foreach ( $categoryTerms as $categoryTerm ) : 
+                                $category_theme = get_field('category_theme', 'information_category_' . $categoryTerm->term_id);
+                                $category_image = get_field('category_image', 'information_category_' . $categoryTerm->term_id);
+                            ?>
+
+                            <?php 
+                                $currentCategory = get_queried_object();
+                                $currentCategoryName = $currentCategory->name;
+                            ?>
+
+                        
+                            <a href="<?php echo esc_url( get_term_link( $categoryTerm ) ); ?>" class="information__nav-grid-item <?php echo $currentCategoryName === $categoryTerm->name ? 'active' : ''; ?>" style="background-color: <?php echo $category_theme; ?>; border: 3px solid <?php echo $category_theme; ?>; color: <?php echo $category_theme; ?>;">
+
+                                <h2 class="information__nav-grid-item-title" style="color: <?php echo $category_theme; ?>;"><?php echo esc_html( $categoryTerm->name ); ?></h2>
+
+                            </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else : ?>
+                        <p><?php esc_html_e( 'No information categories found.', 'text-domain' ); ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
