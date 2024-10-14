@@ -2,6 +2,23 @@
 <?php get_template_part('templates/parts/banner'); ?>
 
 <main id="primary" class="information">
+
+
+    <?php if (is_tax('information_category') && get_field('category_image', get_queried_object())) : ?>
+        
+        <?php
+            $category_colour = get_field('category_theme', get_queried_object());
+            $category_image = get_field('category_image', get_queried_object());
+        ?>
+
+        <div class="information__background">
+            <div class="information__background-overlay"><span class="sr-only">Overlay</span></div>
+            <img alt="" src="<?php echo esc_url($category_image['url']); ?>"/>
+        </div>
+
+    <?php endif; ?>
+
+
 	<div class="information__wrapper">
     
         <div class="information__items">
@@ -20,7 +37,7 @@
                     ?>
 
                     
-                    <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;" data-aos="flip-left"   data-aos-duration="1000" data-aos-delay="<?php echo $animCounter; ?>00">
+                    <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="<?php echo $animCounter; ?>00">
                         <div class="information__items-grid-item-main">
                             <h2 class="information__items-grid-item-title" style="color: <?php echo $theme_colour; ?>;"><?php the_title(); ?></h2>
                             <div class="information__items-grid-item-excerpt" style="color: <?php echo $theme_colour; ?>;"><?php the_excerpt(); ?></div>

@@ -23,23 +23,69 @@
             "append": ""
         },
         {
-            "key": "field_665877f1104e4",
-            "label": "Google Map",
-            "name": "google_map",
+            "key": "field_670cfe28893f2",
+            "label": "Map Locations",
+            "name": "map_locations",
             "aria-label": "",
-            "type": "google_map",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": 400
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_670cfe32893f3",
+                    "label": "Map Location Items",
+                    "name": "map_location_items",
+                    "aria-label": "",
+                    "type": "google_map",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "center_lat": "",
+                    "center_lng": "",
+                    "zoom": "",
+                    "height": "",
+                    "parent_repeater": "field_670cfe28893f2"
+                },
+                {
+                    "key": "field_670cfee44725c",
+                    "label": "Map Location Title",
+                    "name": "map_location_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_670cfe28893f2"
+                }
+            ]
         }
     ],
     "location": [
@@ -60,5 +106,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717073937
+    "modified": 1728904940
 }

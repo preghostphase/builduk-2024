@@ -16,48 +16,57 @@
 					<div class="contact__info-map">
 						<div class="acf-map">
 
+						<?php if(have_rows('map_locations')) : ?>
+
+							<?php while( have_rows('map_locations') ): the_row() ; ?>
+
 							<?php
-								$today = date('Ymd');
-								$args = array(
-									'post_type'     => 'locations',
-									'posts_per_page' => -1,
-								);
-								$locations = new WP_Query( $args );
+							$mapLocation = get_sub_field('map_location_items');
+							$lat = $mapLocation['lat'];
+							$lng = $mapLocation['lng'];
+							$mapLocationTitle = get_sub_field('map_location_title');
 							?>
-							<?php
+							<div class="marker" data-lat="<?php echo $lat; ?>" data-lng="<?php echo $lng; ?>">
+								<p class="marker__title"><?php echo $mapLocationTitle; ?></p>
+								<?php
+									if( $mapLocation ) {
 
-							while ($locations->have_posts()) : $locations->the_post();
+										// Construct the address.
+										$address = '';
 
-								$mapLocation = get_field('location');
-								$lat = $mapLocation['lat'];
-								$lng = $mapLocation['lng'];
-
-								?>
-									<div class="marker" data-lat="<?php echo $lat; ?>" data-lng="<?php echo $lng; ?>">
-										<a class="marker__title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										<?php
-											if( $mapLocation ) {
-
-												// Loop over segments and construct HTML.
-												$address = '';
-												foreach( array('street_number', 'street_name', 'city', 'post_code', 'country') as $i => $k ) {
-													if( isset( $mapLocation[ $k ] ) ) {
-														$address .= sprintf( '<span class="segment-%s">%s</span>', $k, $mapLocation[ $k ] );
-													}
-												}
-												// Trim trailing comma.
-												$address = trim( $address, ', ' );
-												// Display HTML.
-												echo '<div class="marker__address">' . $address . '</div>';
+										// Combine street number and street name in a single segment
+										if( isset( $mapLocation['street_number'] ) || isset( $mapLocation['street_name'] ) ) {
+											$address .= '<span class="segment-street">';
+											if( isset( $mapLocation['street_number'] ) ) {
+												$address .= $mapLocation['street_number'] . ' ';
 											}
-										?>
-									</div>
+											if( isset( $mapLocation['street_name'] ) ) {
+												$address .= $mapLocation['street_name'];
+											}
+											$address .= '</span>';
+										}
 
-							<?php endwhile;
+										// Add the remaining address components
+										foreach( array('city', 'post_code', 'country') as $k ) {
+											if( isset( $mapLocation[ $k ] ) ) {
+												$address .= sprintf( '<span class="segment-%s">%s</span>', $k, $mapLocation[ $k ] );
+											}
+										}
 
-							wp_reset_query();
+										// Trim trailing comma or space.
+										$address = trim( $address, ', ' );
 
-							?>
+										// Display HTML.
+										echo '<div class="marker__address">' . $address . '</div>';
+									}
+								?>
+							</div>
+
+							<?php endwhile; ?>
+
+					<?php endif; ?>
+
+						
 						</div>
 					</div>
 				</div>

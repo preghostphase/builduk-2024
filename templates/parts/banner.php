@@ -15,10 +15,10 @@ function featured_image_check($page_id) {
     if (is_category() && get_field('category_featured_image', 'category_' . get_queried_object_id())) {
         return true;
     }
-    if (is_category() && get_field('category_featured_image', 'category_' . get_queried_object_id())) {
+    if (is_tax('information_category') && get_field('category_image', get_queried_object())){
         return true;
     }
-    if (is_tax('information_category') && get_field('category_image', get_queried_object())){
+    if (is_tax('members_category') && get_field('category_image', get_queried_object())){
         return true;
     }
     return has_post_thumbnail($page_id);
@@ -31,7 +31,7 @@ $banner_colour = get_field('banner_colour');
 
 ?>
 
-<section class="banner <?php echo esc_attr($banner_class); ?> <?php echo $banner_colour ? 'banner--has-custom-colour' : ''; ?> <?php echo is_tax('members_category') ? 'banner--members-category' : ''; ?> <?php echo is_tax('information_category') ? 'banner--information-category' : ''; ?>">
+<section class="banner <?php echo esc_attr($banner_class); ?> <?php echo $banner_colour ? 'banner--has-custom-colour' : ''; ?> <?php echo is_tax('members_category') || is_post_type_archive('members') ? 'banner--members-category' : ''; ?> <?php echo is_tax('information_category') || is_post_type_archive('information') ? 'banner--information-category' : ''; ?>">
 
     <?php if (is_category() && $category_image = get_field('category_featured_image', 'category_' . get_queried_object_id())) : ?>
         <div class="banner__image">
@@ -56,6 +56,16 @@ $banner_colour = get_field('banner_colour');
                 <div class="banner__image-overlay" style="background-color: <?php echo get_field( 'secondary_colour', 'option' ); ?>"><span class="sr-only">Overlay</span></div>
             <?php endif; ?>
             <img alt="" src="<?php echo esc_url($category_image['url']); ?>"/>
+        </div>
+    <?php elseif (is_tax('members_category') && get_field('category_image', get_queried_object())) : ?>
+        
+        <?php
+            $members_category_image = get_field('category_image', get_queried_object());
+        ?>
+
+        <div class="banner__image">
+            <div class="banner__image-overlay"><span class="sr-only">Overlay</span></div>
+            <img alt="" src="<?php echo esc_url($members_category_image['url']); ?>"/>
         </div>
 
     <?php elseif (has_post_thumbnail($page_id)) : ?>
@@ -110,6 +120,43 @@ $banner_colour = get_field('banner_colour');
             <?php endif; ?>
         </div>
 
+        <?php if (is_post_type_archive('members')) : ?>
+            <div  class="members__nav">
+            <div class="members__nav-wrapper">
+                <?php
+                    // Get all custom taxonomy terms
+                    $categoryTerms = get_terms(array(
+                        'taxonomy' => 'members_category',
+                        'hide_empty' => true,
+                    ));
+
+                    if ( !empty( $categoryTerms ) && !is_wp_error( $categoryTerms ) ) : ?>
+                        <div class="members__nav-grid">
+                            <?php foreach ( $categoryTerms as $categoryTerm ) : 
+                                // Get the 'category_image' ACF field for the current term
+                                $category_image = get_field('category_image', 'members_category_' . $categoryTerm->term_id);
+                            ?>
+
+                        
+                            <a href="<?php echo esc_url( get_term_link( $categoryTerm ) ); ?>" class="members__nav-grid-item">
+                                <h2 class="members__nav-grid-item-title"><?php echo esc_html( $categoryTerm->name ); ?></h2>
+                                <?php if (is_array($category_image) && isset($category_image['url'])) : ?>
+                                    <div class="members__nav-grid-item-image">
+                                        <img src="<?php echo esc_url( $category_image['url'] ); ?>" alt="<?php echo esc_attr( $category_image['alt'] ); ?>" />
+                                    </div>
+                                <?php else : ?>
+                                    <div class="members__nav-grid-item-image"><span class="sr-only">Overlay</span></div>
+                                <?php endif; ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else : ?>
+                    <p><?php esc_html_e( 'No members categories found.', 'text-domain' ); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>       
+
         <?php if(is_tax('members_category')) : ?>
 
             <div class="members__nav">
@@ -125,16 +172,24 @@ $banner_colour = get_field('banner_colour');
                         <?php foreach ( $memberTerms as $memberTerm ) : 
                             $currentMemberCategory = get_queried_object();
                             $currentMemberCategoryName = $currentMemberCategory->name;
+                            $currentMemberCategoryImage = get_field('category_image', 'members_category_' . $memberTerm->term_id);
                         ?>
                             <a href="<?php echo esc_url( get_term_link( $memberTerm ) ); ?>" class="members__nav-grid-item <?php echo $currentMemberCategoryName === $memberTerm->name ? 'active' : ''; ?>">
 
                                 <h2 class="members__nav-grid-item-title"><?php echo esc_html( $memberTerm->name ); ?></h2>
 
+                                <?php if (is_array($currentMemberCategoryImage) && isset($currentMemberCategoryImage['url'])) : ?>
+                                    <div class="members__nav-grid-item-image">
+                                        <img src="<?php echo esc_url( $currentMemberCategoryImage['url'] ); ?>" alt="<?php echo esc_attr( $currentMemberCategoryImage['alt'] ); ?>" />
+                                    </div>
+                                <?php else : ?>
+                                    <div class="members__nav-grid-item-image"><span class="sr-only">Overlay</span></div>
+                                <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
                     </div>
                 <?php else : ?>
-                    <p><?php esc_html_e( 'No information categories found.', 'text-domain' ); ?></p>
+                    <p><?php esc_html_e( 'No member categories found.', 'text-domain' ); ?></p>
                 <?php endif; ?>
          
 

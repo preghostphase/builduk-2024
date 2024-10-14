@@ -15,6 +15,8 @@
             'hide_empty' => true,
         ));
 
+        $categoryCounter = 0;
+
         if ( !empty( $categoryTerms ) && !is_wp_error( $categoryTerms ) ) : ?>
             <div class="information__categories-grid">
                 <?php foreach ( $categoryTerms as $categoryTerm ) : 
@@ -23,7 +25,7 @@
                 ?>
 
                
-                        <a href="<?php echo esc_url( get_term_link( $categoryTerm ) ); ?>" class="information__categories-grid-item" style="background-color: <?php echo $category_theme; ?>">
+                        <a href="<?php echo esc_url( get_term_link( $categoryTerm ) ); ?>" class="information__categories-grid-item" style="background-color: <?php echo $category_theme; ?>" data-aos="flip-left" data-aos-delay="<?php echo $categoryCounter; ?>00" data-aos-duration="1000">
                         <div class="information__categories-grid-item-image">
                             <div class="information__categories-grid-item-image-overlay" style="background-color: <?php echo $category_theme; ?>"><span class="sr-only">Overlay for image</span></div>
                             <img src="<?php echo esc_url( $category_image['url'] ); ?>" alt="<?php echo esc_attr( $category_image['alt'] ); ?>" />
@@ -33,6 +35,8 @@
                        
 
                         </a>
+
+                        <?php $categoryCounter++; ?>
                 <?php endforeach; ?>
             </div>
         <?php else : ?>
@@ -41,9 +45,9 @@
 
     </div>
 
-    <div class="information__search">
+    <div class="information__search" data-aos="fade-up">
         <div class="information__search-text">
-            <h3>Can't find what you're looking for?</h3>
+            <h5>Can't find what you're looking for?</h5>
             <p>Search our Information Bank</p>
         </div>
         <form class="information__search-form">

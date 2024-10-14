@@ -8,7 +8,9 @@
 					<h1 class="home-banner__content-title" data-aos="fade-up" data-aos-delay="200"><?php echo get_field('banner_title'); ?></h1>
 				<?php endif; ?>
 				<?php if(get_field('banner_button_text') && get_field('banner_button_link')) : ?>
-					<a href="<?php echo esc_url(get_field('banner_button_link')); ?>" class="button" data-aos="fade-up" data-aos-delay="400"><?php echo get_field('banner_button_text'); ?></a>
+					<div class="home-banner__content-button" data-aos="fade-up" data-aos-delay="400">
+						<a href="<?php echo esc_url(get_field('banner_button_link')); ?>" class="button"><?php echo get_field('banner_button_text'); ?></a>
+					</div>
 				<?php endif; ?>
 			</div>
 			<figure class="home-banner__image">
