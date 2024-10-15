@@ -3,7 +3,6 @@
 // ===============================================================
 
 .banner {
-	margin-bottom: 30px;
 	height: auto;
 	position: relative;
 	overflow: hidden;
@@ -11,14 +10,6 @@
 	align-items: center;
 	padding: 75px 0;
 	width: 100%;
-
-	@include media(">tablet"){
-		margin-bottom: 50px;
-	}
-
-	@include media(">desktop"){
-		margin-bottom: 60px;
-	}
 
 	// Remove margin for job posts
 	body.single-jobpost & {

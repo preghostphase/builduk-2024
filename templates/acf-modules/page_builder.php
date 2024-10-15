@@ -9,6 +9,7 @@
 	<?php get_template_part( 'templates/acf-modules/call_to_action_block' ); ?>
 	<?php get_template_part( 'templates/acf-modules/concertina_block' ); ?>
 	<?php get_template_part( 'templates/acf-modules/team_members' ); ?>
+	<?php get_template_part( 'templates/acf-modules/cards_block' ); ?>
 	<?php endwhile; ?>
 </div>
 <?php endif; ?>

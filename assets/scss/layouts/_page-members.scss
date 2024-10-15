@@ -48,6 +48,7 @@
             height: auto;
             position: relative;
             display: grid;
+            gap: 5px;
             align-items: flex-end;
             grid-template-columns: repeat(2, 1fr);
 
@@ -57,6 +58,7 @@
 
             @include media(">desktop"){
                 grid-template-columns: repeat(5, 1fr);
+                gap: 0;
             }
 
 

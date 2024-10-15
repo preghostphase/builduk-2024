@@ -7,7 +7,6 @@
                     <h2 class="downloads-block__title" data-aos="fade-up"><?php echo get_sub_field('block_title'); ?></h2>
                 <?php endif; ?>
 
-
                 <?php if( have_rows('downloadable_item') ): ?>
                     <div class="downloads-block__grid">
                         <?php while( have_rows('downloadable_item') ): the_row(); 

@@ -86,6 +86,10 @@
 
 </symbol>
 <symbol id="up" viewBox="0 0 22.945 14.166">
-  <path id="up" d="M11.7,26.166l8.775-8.756,8.77,8.756,2.7-2.7L20.47,12,9,23.466Z" transform="translate(-9 -12)"/>
+  <path id="upn" d="M11.7,26.166l8.775-8.756,8.77,8.756,2.7-2.7L20.47,12,9,23.466Z" transform="translate(-9 -12)"/>
+
+</symbol>
+<symbol id="x" viewBox="0 0 22 22">
+  <path id="_11053970_x_logo_twitter_new_brand_icon" data-name="11053970_x_logo_twitter_new_brand_icon" d="M14.1,10.316,22.286,1H20.346L13.23,9.088,7.551,1H1L9.589,13.231,1,23H2.941l7.509-8.543,6,8.543H23Zm-2.659,3.022-.872-1.219L3.641,2.432H6.622l5.59,7.822.868,1.219,7.265,10.166H17.363Z" transform="translate(-1 -1)"/>
 
 </symbol></svg>

@@ -26,11 +26,18 @@
 	svg {
 		fill: $color-white;
 		transition: all 0.3s ease;
+
+		path {
+			fill: $color-white;
+		}
 	}
 
 	&:hover {
 		svg {
 			fill: $color-primary;
+			path {
+				fill: $color-primary;
+			}
 		}
 	}
 }

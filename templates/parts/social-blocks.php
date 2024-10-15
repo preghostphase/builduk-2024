@@ -19,7 +19,7 @@
 		<?php if ( get_field('twitter', 'option') ): ?>
 		<li class="social-block__list-item">
 			<a href="<?php echo get_field('twitter', 'option'); ?>" target="_blank" rel="noopener" class="social-block__list-link">
-				<?php load_inline_svg('twitter')?>
+				<?php load_inline_svg('x')?>
 			</a>
 		</li>
 		<?php endif; ?>

@@ -4,7 +4,7 @@
         <div class="concertina-block">
             <div class="concertina-block__wrapper">
                 <?php if(get_sub_field('block_title')) : ?>
-                    <h2 class="downloads-block__title" data-aos="fade-up"><?php echo get_sub_field('block_title'); ?></h2>
+                    <h2 class="concertina-block__title" data-aos="fade-up"><?php echo get_sub_field('block_title'); ?></h2>
                 <?php endif; ?>
 
                 <?php if( have_rows('concertina_item') ): 
