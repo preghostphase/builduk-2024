@@ -70,15 +70,12 @@
                 justify-content: center;
                 align-items: flex-end;
                 background-color: $color-primary;
-                // border: 3px solid $color-primary;
                 border-color: transparent;
                 border-bottom: none;
 
                 &:hover,
                 &:focus {
-                    .members__nav-grid-item-image::before {
-                        background-color: $color-secondary;
-                    }
+                    background-color: $color-secondary;
                 }
 
                 &.active {
@@ -506,7 +503,7 @@
                 &-keys {
                     position: absolute;
                     z-index: 2;
-                    bottom: -16px;
+                    bottom: -10px;
                     left: 0;
                     width: 100%;
                     height: auto;
@@ -520,15 +517,10 @@
                         justify-content: center;
                         align-items: center;
                         position: relative;
-                        width: 16px;
-                        height: 16px;
+                        width: 25%;
+                        height: 10px;
                         // border-radius: 100%;
                         overflow: hidden;
-
-                        svg {
-                            width: 8px;
-                            height: 8px;
-                        }
                     }
                 }
             }

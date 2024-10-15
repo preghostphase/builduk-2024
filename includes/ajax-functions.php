@@ -104,29 +104,29 @@ function ajax_search_information() {
                 $term = $terms[0]; // Get the first term (you can adjust this if multiple terms exist)
                 $theme_colour = get_field('category_theme', $term);
             }
+
+
     
             $information_link = get_field('information_link');
+            $description = get_field('description');
             $newTab = get_field('open_link_in_new_tab');
             $overrideButtonText = get_field('override_button_text');
-
-            // Get the excerpt and limit it to 30 characters
-            $excerpt = get_the_excerpt();
-            $short_excerpt = wp_trim_words($excerpt, 10, '...');
+            ?>
+            
+            <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;">
+                <div class="information__items-grid-item-main">
+                    <h2 class="information__items-grid-item-title" style="color: <?php echo $theme_colour; ?>;"><?php the_title(); ?></h2>
+                    <div class="information__items-grid-item-excerpt" style="color: <?php echo $theme_colour; ?>;">
+                    <?php echo $description ? '<p>' . $description . '</p>' : the_excerpt(); ?></div>
+                </div>
+                <?php if($information_link) : ?>
+                    <span class="information__items-grid-item-text" style="background-color: <?php echo $theme_colour; ?>;"><?php echo $overrideButtonText ? $overrideButtonText : 'Download'; ?></span>
+                <?php else : ?>
+                    <span class="information__items-grid-item-text" style="background-color: <?php echo $theme_colour; ?>;"><?php echo $overrideButtonText ? $overrideButtonText : 'Find out more'; ?></span>
+                <?php endif; ?>
+            </a>
     
-            echo '<a class="information__items-grid-item" href="' . ($information_link ? $information_link : get_permalink()) . '" ' . ($newTab ? 'target="_blank"' : '') . '>';
-            echo '<div class="information__items-grid-item-main" style="background-color: ' . $theme_colour . ';">';
-            echo '<h2 class="information__items-grid-item-title">' . get_the_title() . '</h2>';
-            echo '<div class="information__items-grid-item-excerpt">' . $short_excerpt . '</div>';
-            echo '</div>';
-            
-            if ($information_link) {
-                echo '<span class="information__items-grid-item-text" style="color: ' . $theme_colour . ';">' . ($overrideButtonText ? $overrideButtonText : 'Download') . '</span>';
-            } else {
-                echo '<span class="information__items-grid-item-text" style="color: ' . $theme_colour . ';">' . ($overrideButtonText ? $overrideButtonText : 'Find out more') . '</span>';
-            }
-            
-            echo '</a>';
-        }
+        <?php }
     } else {
         echo '<p>Sorry, your search yielded no results.</p>';
     }

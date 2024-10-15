@@ -89,7 +89,7 @@ div[id^="contact-buttons-"] .svg-wrapper svg { fill: var(--theme-primary); -webk
 
 .handorgel.accordion .svg-wrapper svg { -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; fill: var(--theme-secondary); }
 
-.handorgel.accordion .handorgel__header__button { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 2rem 1.75rem; font-size: var(--font-medium); font-weight: 400; border: 2px solid #f2f2f2; -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; color: var(--theme-secondary); background: #fff; }
+.handorgel.accordion .handorgel__header__button { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 2rem 1.75rem; font-size: var(--font-small); font-weight: 400; border: 2px solid #f2f2f2; -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; color: var(--theme-secondary); background: #fff; }
 
 .handorgel.accordion .handorgel__header__button:hover { background: var(--theme-secondary) !important; color: #fff !important; }
 
@@ -167,7 +167,7 @@ blockquote[id^="testimonial-"].testimonial--right .testimonial__wrapper::before 
 
 .handorgel.accordion .svg-wrapper svg { -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; fill: var(--theme-secondary); }
 
-.handorgel.accordion .handorgel__header__button { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 2rem 1.75rem; font-size: var(--font-medium); font-weight: 400; border: 2px solid #f2f2f2; -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; color: var(--theme-secondary); background: #fff; }
+.handorgel.accordion .handorgel__header__button { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 2rem 1.75rem; font-size: var(--font-small); font-weight: 400; border: 2px solid #f2f2f2; -webkit-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; transition: all 0.2s ease-in; color: var(--theme-secondary); background: #fff; }
 
 .handorgel.accordion .handorgel__header__button:hover { background: var(--theme-secondary) !important; color: #fff !important; }
 

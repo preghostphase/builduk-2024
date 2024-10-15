@@ -21,6 +21,12 @@ function featured_image_check($page_id) {
     if (is_tax('members_category') && get_field('category_image', get_queried_object())){
         return true;
     }
+    if(is_post_type_archive('members') && get_field('members_archive_banner_image', 'option')){
+        return true;
+    }
+    if(is_post_type_archive('information') && get_field('information_archive_banner_image', 'option')){
+        return true;
+    }
     return has_post_thumbnail($page_id);
 }
 
@@ -66,6 +72,28 @@ $banner_colour = get_field('banner_colour');
         <div class="banner__image">
             <div class="banner__image-overlay"><span class="sr-only">Overlay</span></div>
             <img alt="" src="<?php echo esc_url($members_category_image['url']); ?>"/>
+        </div>
+
+    <?php elseif (is_post_type_archive('members') && get_field('members_archive_banner_image', 'option')) : ?>
+
+        <?php
+            $members_archive_image = get_field('members_archive_banner_image', 'option');
+        ?>
+
+        <div class="banner__image">
+            <div class="banner__image-overlay"><span class="sr-only">Overlay</span></div>
+            <img alt="" src="<?php echo esc_url($members_archive_image['url']); ?>"/>
+        </div>
+
+    <?php elseif (is_post_type_archive('information') && get_field('information_archive_banner_image', 'option')) : ?>
+
+        <?php
+            $information_archive_image = get_field('information_archive_banner_image', 'option');
+        ?>
+
+        <div class="banner__image">
+            <div class="banner__image-overlay"><span class="sr-only">Overlay</span></div>
+            <img alt="" src="<?php echo esc_url($information_archive_image['url']); ?>"/>
         </div>
 
     <?php elseif (has_post_thumbnail($page_id)) : ?>
@@ -132,21 +160,10 @@ $banner_colour = get_field('banner_colour');
 
                     if ( !empty( $categoryTerms ) && !is_wp_error( $categoryTerms ) ) : ?>
                         <div class="members__nav-grid">
-                            <?php foreach ( $categoryTerms as $categoryTerm ) : 
-                                // Get the 'category_image' ACF field for the current term
-                                $category_image = get_field('category_image', 'members_category_' . $categoryTerm->term_id);
-                            ?>
-
+                            <?php foreach ( $categoryTerms as $categoryTerm ) : ?>
                         
                             <a href="<?php echo esc_url( get_term_link( $categoryTerm ) ); ?>" class="members__nav-grid-item">
                                 <h2 class="members__nav-grid-item-title"><?php echo esc_html( $categoryTerm->name ); ?></h2>
-                                <?php if (is_array($category_image) && isset($category_image['url'])) : ?>
-                                    <div class="members__nav-grid-item-image">
-                                        <img src="<?php echo esc_url( $category_image['url'] ); ?>" alt="<?php echo esc_attr( $category_image['alt'] ); ?>" />
-                                    </div>
-                                <?php else : ?>
-                                    <div class="members__nav-grid-item-image"><span class="sr-only">Overlay</span></div>
-                                <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -172,19 +189,9 @@ $banner_colour = get_field('banner_colour');
                         <?php foreach ( $memberTerms as $memberTerm ) : 
                             $currentMemberCategory = get_queried_object();
                             $currentMemberCategoryName = $currentMemberCategory->name;
-                            $currentMemberCategoryImage = get_field('category_image', 'members_category_' . $memberTerm->term_id);
                         ?>
                             <a href="<?php echo esc_url( get_term_link( $memberTerm ) ); ?>" class="members__nav-grid-item <?php echo $currentMemberCategoryName === $memberTerm->name ? 'active' : ''; ?>">
-
                                 <h2 class="members__nav-grid-item-title"><?php echo esc_html( $memberTerm->name ); ?></h2>
-
-                                <?php if (is_array($currentMemberCategoryImage) && isset($currentMemberCategoryImage['url'])) : ?>
-                                    <div class="members__nav-grid-item-image">
-                                        <img src="<?php echo esc_url( $currentMemberCategoryImage['url'] ); ?>" alt="<?php echo esc_attr( $currentMemberCategoryImage['alt'] ); ?>" />
-                                    </div>
-                                <?php else : ?>
-                                    <div class="members__nav-grid-item-image"><span class="sr-only">Overlay</span></div>
-                                <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
                     </div>

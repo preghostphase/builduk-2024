@@ -41,3 +41,13 @@ require get_template_directory() . '/includes/ajax-functions.php';
 
 // Stylesheet cache fixes
 require get_template_directory() . '/includes/stylesheet-caching.php';
+
+function custom_alphabetical_order($orderby, $query) {
+    if ($query->is_tax('information_category') && $query->is_main_query()) {
+        global $wpdb;
+        $orderby = "LOWER(REPLACE(REPLACE({$wpdb->posts}.post_title, '–', ''), '-', '')) ASC";
+    }
+    return $orderby;
+}
+add_filter('posts_orderby', 'custom_alphabetical_order', 10, 2);
+

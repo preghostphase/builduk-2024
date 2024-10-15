@@ -390,10 +390,6 @@
 				width: 100%;
 				height: auto;
 				position: relative;
-
-				@include media(">desktop"){
-					gap: 25px;
-				}
 			}
 
 			&__item {
@@ -417,10 +413,6 @@
 					}
 				}
 
-				&:hover {
-					transform: translateY(-10px);
-				}
-
 				&-heading {
 					width: 100%;
 					display: flex;
@@ -431,12 +423,12 @@
 					background-color: $color-secondary;
 					color: $color-white;
 					padding: 15px;
-					font-size: var(--font-medium);
+					font-size: var(--font-small);
 					border-radius: 0;
 					text-align: left;
 
 					@include media(">tablet"){
-						padding: 20px 30px;
+						padding: 8px 30px;
 					}
 
 					&::before {
@@ -487,7 +479,7 @@
 					width: 100%;
 					height: auto;
 					position: relative;
-					background-color: $color-secondary;
+					background-color: $color-grey-light;
 					padding: 15px;
 					visibility: hidden;
 					opacity: 0;
@@ -496,11 +488,6 @@
 
 					@include media(">tablet"){
 						padding: 30px 30px;
-					}
-
-
-					> * {
-						color: $color-white;
 					}
 				}
 			}

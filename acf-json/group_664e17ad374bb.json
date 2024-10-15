@@ -1,6 +1,6 @@
 {
     "key": "group_664e17ad374bb",
-    "title": "Page: Flexpage",
+    "title": "Switch Page Builder",
     "fields": [
         {
             "key": "field_664e17adfe023",
@@ -798,6 +798,20 @@
             {
                 "param": "page_template",
                 "operator": "==",
+                "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "information"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
                 "value": "template-flexpage.php"
             }
         ]
@@ -811,5 +825,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725457726
+    "modified": 1728992089
 }

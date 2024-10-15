@@ -22,25 +22,45 @@
 	<div class="information__wrapper">
     
         <div class="information__items">
-            <?php if ( have_posts() ) :
+
+
+        <?php
+            $args = array(
+                'post_type' => 'information', // Adjust if using a custom post type
+                'orderby' => 'title',
+                'order' => 'ASC',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'information_category',
+                        'field'    => 'term_id',
+                        'terms'    => get_queried_object_id(),
+                    ),
+                ),
+                'suppress_filters' => false, // Allows filters to be applied
+            );
+
+            $query = new WP_Query( $args );
+
+            if ( $query->have_posts() ) :
                 $term = get_queried_object(); 
-                // Retrieve the custom field value for the 'theme_colour' from the term object
                 $theme_colour = get_field('category_theme', $term);
             ?>
+
                 <div class="information__items-grid">
                     <?php $animCounter = 0; ?>
                     <?php while ( have_posts() ) : the_post(); ?>
                     <?php
                         $information_link = get_field('information_link');
+                        $description = get_field('description');
                         $newTab = get_field('open_link_in_new_tab');
                         $overrideButtonText = get_field('override_button_text');
                     ?>
-
                     
-                    <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="<?php echo $animCounter; ?>00">
+                    <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;" data-aos="flip-left" data-aos-duration="1000">
                         <div class="information__items-grid-item-main">
                             <h2 class="information__items-grid-item-title" style="color: <?php echo $theme_colour; ?>;"><?php the_title(); ?></h2>
-                            <div class="information__items-grid-item-excerpt" style="color: <?php echo $theme_colour; ?>;"><?php the_excerpt(); ?></div>
+                            <div class="information__items-grid-item-excerpt" style="color: <?php echo $theme_colour; ?>;">
+                            <?php echo $description ? '<p>' . $description . '</p>' : the_excerpt(); ?></div>
                         </div>
                         <?php if($information_link) : ?>
                             <span class="information__items-grid-item-text" style="background-color: <?php echo $theme_colour; ?>;"><?php echo $overrideButtonText ? $overrideButtonText : 'Download'; ?></span>

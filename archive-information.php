@@ -55,7 +55,6 @@
             <button type="submit"><span class="sr-only">Search Button</span><?php load_inline_svg('search')?></button>
         </form>
         <div class="information__search-results">
-
         </div>
     </div>
 

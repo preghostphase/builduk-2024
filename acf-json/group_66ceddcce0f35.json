@@ -20,6 +20,26 @@
             "placeholder": ""
         },
         {
+            "key": "field_670e4c5b88661",
+            "label": "Description",
+            "name": "description",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "If this box is left empty, the description will be taken from the body text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66ceddf481846",
             "label": "Open Link in new tab",
             "name": "open_link_in_new_tab",
@@ -85,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724833328
+    "modified": 1728990332
 }
