@@ -434,15 +434,16 @@ body.single-jobpost {
 			list-style: none;
 			position: absolute;
 			top: 100%;
-			left: 0;
+			left: 50%;
+			transform: translate(-50%, 0);
 			background-color: $color-secondary;
-			width: 215px;
+			width: 255px;
 			display: none;
 		}
 		> .menu-item-has-children > .sub-menu > .menu-item > a {
 			color: $color-white;
 			font-size: var(--font-xsmall);
-			padding: 2rem;
+			padding: 1.5rem 2rem;
 
 			&::after {
 				background-color: $color-white;

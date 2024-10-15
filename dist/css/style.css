@@ -1475,9 +1475,9 @@ body.menu-active-mobile .header { height: 100%; width: 100%; }
 
 .menu-desktop .menu .menu-item-has-children:hover > .sub-menu, .menu-desktop .menu .menu-item-has-children:focus > .sub-menu { display: block; }
 
-.menu-desktop .menu > .menu-item-has-children > .sub-menu { list-style: none; position: absolute; top: 100%; left: 0; background-color: var(--theme-secondary); width: 215px; display: none; }
+.menu-desktop .menu > .menu-item-has-children > .sub-menu { list-style: none; position: absolute; top: 100%; left: 50%; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); background-color: var(--theme-secondary); width: 255px; display: none; }
 
-.menu-desktop .menu > .menu-item-has-children > .sub-menu > .menu-item > a { color: #fff; font-size: var(--font-xsmall); padding: 2rem; }
+.menu-desktop .menu > .menu-item-has-children > .sub-menu > .menu-item > a { color: #fff; font-size: var(--font-xsmall); padding: 1.5rem 2rem; }
 
 .menu-desktop .menu > .menu-item-has-children > .sub-menu > .menu-item > a::after { background-color: #fff; }
 
@@ -2577,11 +2577,11 @@ body.single-jobpost .banner { margin-bottom: 0; }
 
 .banner.banner--has-image { padding: 100px 0; }
 
-@media (min-width: 62.51em) { .banner.banner--has-image { min-height: 300px; } }
+@media (min-width: 62.51em) { .banner.banner--has-image { min-height: 350px; } }
 
 .banner.banner--information-category, .banner.banner--members-category { padding-bottom: 0; margin-bottom: 0; }
 
-@media (min-width: 62.51em) { .banner.banner--information-category, .banner.banner--members-category { padding-bottom: 150px; } }
+@media (min-width: 62.51em) { .banner.banner--information-category, .banner.banner--members-category { padding-bottom: 170px; } }
 
 .banner__search { margin-bottom: 0; }
 
@@ -2607,7 +2607,7 @@ body.single-jobpost .banner { margin-bottom: 0; }
 
 .banner__content h1 { font-size: var(--font-xxlarge); color: #fff; line-height: 1.1; -webkit-transition: all 0.1s ease; -o-transition: all 0.1s ease; transition: all 0.1s ease; text-transform: uppercase; }
 
-.banner__content p { display: none; color: #fff; font-size: var(--font-small); }
+.banner__content p { display: none; font-weight: 700; color: #fff; font-size: var(--font-medium); text-transform: uppercase; }
 
 @media (min-width: 62.51em) { .banner__content p { display: block; } }
 

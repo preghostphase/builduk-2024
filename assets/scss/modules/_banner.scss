@@ -28,7 +28,7 @@
 	&.banner--has-image {
 		padding: 100px 0;
 		@include media(">desktop"){
-			min-height: 300px;
+			min-height: 350px;
 		}
 	}
 
@@ -38,7 +38,7 @@
 		margin-bottom: 0;
 
 		@include media(">desktop"){
-			padding-bottom: 150px;
+			padding-bottom: 170px;
 		}
 	}
 }
@@ -109,8 +109,10 @@
 
 	p {
 		display: none;
+		font-weight: 700;
 		color: $color-white;
-		font-size: var(--font-small);
+		font-size: var(--font-medium);
+		text-transform: uppercase;
 
 		@include media(">desktop") {
 			display: block;

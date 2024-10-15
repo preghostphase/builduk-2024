@@ -37,7 +37,7 @@
 						$logo = get_sub_field('logo');
                     ?>
 
-                    <a href="<?php echo esc_url($url); ?>" class="home-blocks__grid-item">
+                    <a href="<?php echo esc_url($url); ?>" class="home-blocks__grid-item" data-aos="flip-left" data-aos-duration="1000">
                         <div class="home-blocks__grid-item-image">
 
                             <div class="home-blocks__grid-item-image-overlay" style="background-color: <?php echo esc_attr($colour ? $colour : get_field('secondary_colour', 'option')); ?>;"><span class="sr-only">Overlay</span></div>

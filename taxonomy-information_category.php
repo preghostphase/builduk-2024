@@ -47,7 +47,6 @@
             ?>
 
                 <div class="information__items-grid">
-                    <?php $animCounter = 0; ?>
                     <?php while ( have_posts() ) : the_post(); ?>
                     <?php
                         $information_link = get_field('information_link');
@@ -68,8 +67,6 @@
                             <span class="information__items-grid-item-text" style="background-color: <?php echo $theme_colour; ?>;"><?php echo $overrideButtonText ? $overrideButtonText : 'Find out more'; ?></span>
                         <?php endif; ?>
                     </a>
-
-                    <?php $animCounter++; ?>
 
                     <?php endwhile; ?>
                 </div>

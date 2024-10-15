@@ -104,13 +104,12 @@ function ajax_search_information() {
                 $term = $terms[0]; // Get the first term (you can adjust this if multiple terms exist)
                 $theme_colour = get_field('category_theme', $term);
             }
-
-
     
             $information_link = get_field('information_link');
             $description = get_field('description');
             $newTab = get_field('open_link_in_new_tab');
             $overrideButtonText = get_field('override_button_text');
+            
             ?>
             
             <a class="information__items-grid-item" href="<?php echo $information_link ? $information_link : the_permalink(); ?>" <?php echo $newTab ? 'target="_blank"' : ''; ?> style="border-color: <?php echo $theme_colour; ?>;">
