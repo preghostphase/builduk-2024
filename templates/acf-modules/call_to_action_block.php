@@ -1,4 +1,5 @@
 <?php if ( get_row_layout() == 'call_to_action_block' ) : ?>
+
 <div class="page-builder-block" data-aos="fade-up">
     <div class="page-builder-block-wrapper">
 
@@ -24,8 +25,7 @@
                     $size = get_sub_field('size');
                 ?>
 
-        
-                <div class="cta-block__item size--<?php echo $size; ?>">
+                <div class="cta-block__item size--<?php echo $size; ?>" style="background-color: <?php echo get_field('banner_colour') ? get_field('banner_colour') : ''; ?>">
                     <?php if($title) : ?>
                         <h2 class="cta-block__item-title"><?php echo $title; ?></h2>
                     <?php endif; ?>
@@ -33,7 +33,7 @@
                         <p class="cta-block__item-text"><?php echo $description; ?></p>
                     <?php endif; ?>
                     <?php if($link) : ?>
-                        <a href="<?php echo esc_url($link); ?>" class="button button--white-hover"><?php echo get_sub_field('button_text') ? $buttonText : 'Read more'; ?></a>
+                        <a href="<?php echo esc_url($link); ?>" class="button button--white"><?php echo get_sub_field('button_text') ? $buttonText : 'Read more'; ?></a>
                     <?php endif; ?>
                 </div>
 

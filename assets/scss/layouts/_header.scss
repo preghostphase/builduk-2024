@@ -149,7 +149,7 @@ body.single-jobpost {
 	display: block;
 	z-index: -1;
 	position: fixed;
-	background: linear-gradient(to bottom, lighten($color-black, 5%) 0%, $color-secondary 5%);
+	background: $color-secondary;
 	top: $mobile-header-height;
 	left: auto;
 	right: 0;
@@ -258,17 +258,23 @@ body.single-jobpost {
 		> .menu-item-has-children > .sub-menu > .menu-item > a {
 			font-size: var(--font-medium);
 			margin-top: 1rem;
+			position: relative;
+			padding-left: 15px;
 
 			&:before {
-				content: "\2014";
-				color: $color-primary;
-				margin-right: 1rem;
+				content: "";
+				top: 12px;
+				left: 0;
+				width: 10px;
+				height: 2px;
+				background-color: $color-white;
+				position: absolute;
 			}
 		}
 	}
 
 	.menu-mobile__wrapper {
-		padding: 100px 1rem 0;
+		padding: 100px 1rem 60px 0;
 	}
 }
 
@@ -442,8 +448,9 @@ body.single-jobpost {
 		}
 		> .menu-item-has-children > .sub-menu > .menu-item > a {
 			color: $color-white;
+			line-height: 1.5em;
 			font-size: var(--font-xsmall);
-			padding: 1.5rem 2rem;
+			padding: 1.3rem 2rem;
 
 			&::after {
 				background-color: $color-white;

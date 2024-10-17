@@ -41,6 +41,7 @@ body {
 
 	// Comment out below lines when pushing to production they are for debugging only!!!
 	&:after {
+		display: none;
 		z-index: 99999999999;
 		position: fixed;
 		right: 0;
@@ -245,18 +246,17 @@ a[role="button"] br {
 
 .user-content a[role="button"],
 .user-content input[type="button"],
-.user-content button,
+.user-content button:not(.team-members-block__item-bio-close):not(.team-members-block__item-bio-open),
 .user-content .wp-block-button__link,
 a[role="button"],
 input[type="button"],
-button,
 .button {
 	cursor: pointer;
 	min-width: 100px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	border: 3px solid $color-primary;
+	border: 2px solid $color-primary;
 	padding: 15px 30px;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -281,6 +281,30 @@ button,
 
 		.svg-wrapper svg {
 			fill: $color-white;
+		}
+	}
+
+	&.button--white {
+		background: none;
+		border-color: $color-white;
+		color: $color-white;
+
+		&:hover,
+		&:focus {
+			background: $color-white;
+			color: $color-secondary;
+		}
+	}
+
+	&.button--yellow {
+		background: #eaaa00;
+		border-color: #eaaa00;
+		color: $color-white;
+
+		&:hover,
+		&:focus {
+			background: none;
+			color: #eaaa00;
 		}
 	}
 

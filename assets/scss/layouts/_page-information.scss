@@ -407,7 +407,7 @@
 
             button[type="submit"]{
                 height: 50px;
-                width: auto;
+                width: 50px;
                 min-width: 0;
                 padding: 15px;
                 display: flex;
@@ -419,6 +419,11 @@
 
                 .svg-wrapper {
                     margin: 0;
+                }
+
+                svg {
+                    fill: $color-white;
+                    transition: all 0.3s ease;
                 }
             }
         }

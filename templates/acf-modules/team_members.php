@@ -41,7 +41,14 @@
                                         <p class="team-members-block__item-role"><?php echo $role; ?></p>
                                     <?php endif; ?>
                                     <?php if($bio) : ?>
-                                        <div class="team-members-block__item-bio user-content"><?php echo $bio; ?></div>
+                                        <button class="team-members-block__item-bio-open">Read bio</button>
+                                        <div class="team-members-block__item-bio user-content">
+                                            <button class="team-members-block__item-bio-close">
+                                                <span class="sr-only">Close overlay</span>
+                                                <?php load_inline_svg('close')?>
+                                            </button>
+                                            <?php echo $bio; ?>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
 
@@ -58,4 +65,25 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    let teamMembersBlock = document.querySelectorAll('.team-members-block__item');
+
+    for(let tmb = 0; tmb < teamMembersBlock.length; tmb++){
+        let bioOpen = teamMembersBlock[tmb].querySelector('.team-members-block__item-bio-open');
+        let bio = teamMembersBlock[tmb].querySelector('.team-members-block__item-bio');
+        let bioClose = teamMembersBlock[tmb].querySelector('.team-members-block__item-bio-close');
+
+        bioOpen.addEventListener('click', function(){
+            bio.classList.add('visible');
+        });
+
+        bioClose.addEventListener('click', function(){
+            bio.classList.remove('visible');
+        });
+    }
+
+</script>
 <?php endif; ?>

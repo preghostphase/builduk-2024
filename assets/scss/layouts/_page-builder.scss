@@ -7,6 +7,15 @@
     height: auto;
     position: relative;
 	display: block;
+	padding-top: 2.5rem;
+
+	@include media(">tablet"){
+		padding-top: 2.5rem;
+	}
+
+	@include media(">desktop"){
+		padding-top: 3.5rem;
+	}
 
     &-block {
         display: block;
@@ -362,7 +371,7 @@
 				position: relative;
 				background-color: $color-secondary;
 				padding: 30px;
-
+				
 				> .button {
 					margin-top: 1.5rem;
 				}
@@ -609,8 +618,72 @@
 				&-role {
 					color: $color-secondary;
 				}
-				&-bio {
+				&-bio-open {
+					margin: 1rem 0 0 0;
+					border: 2px solid $color-secondary;
+					color: $color-secondary;
+					padding: 10px 20px;
+					font-size: var(--font-xsmall);
+					font-weight: 800;
+					background: $color-white;
+					transition: all 0.3s ease;
+					cursor: pointer;
 
+					&:hover,
+					&:focus {
+						background-color: $color-secondary;
+						color: $color-white;
+					}
+				}
+				&-bio {
+					display: none;
+					background-color: $color-white;
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					z-index: 2;
+					padding: 40px 15px 15px 15px;
+
+					&.visible {
+						display: block;
+					}
+
+					> * {
+						font-size: 0.9em;
+
+						@include media(">desktop"){
+							font-size: var(--font-xxsmall);
+						}
+
+						@include media(">desktopLarge"){
+							font-size: 0.9em;
+						}
+					}
+
+					&-close {
+						background-color: $color-white;
+						width: 20px;
+						height: 20px;
+						cursor: pointer;
+						position: absolute;
+						top: 15px;
+						right: 15px;
+
+						&:hover {
+							svg {
+								fill: $color-primary;
+							}
+						}
+
+						svg {
+							width: 100%;
+							height: 100%;
+							fill: $color-secondary;
+							transition: all 0.3s ease;
+						}
+					}
 				}
 			}
 		}

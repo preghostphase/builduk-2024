@@ -6,6 +6,15 @@
     width: 100%;
     height: auto;
     position: relative;
+    padding-top: 2.5rem;
+
+	@include media(">tablet"){
+		padding-top: 2.5rem;
+	}
+
+	@include media(">desktop"){
+		padding-top: 3.5rem;
+	}
 
     &__wrapper {
         @include constrain();
@@ -82,15 +91,15 @@
             align-items: center;
             justify-content: center;
             border: none;
-            border-radius: 15px;
             padding: 15px 30px;
             text-decoration: none;
             font-size: var(--font-xsmall);
             line-height: 1;
             text-align: center;
             font-weight: 700;
+            border: 2px solid $color-white;
             color: $color-white;
-            background: $color-primary;
+            background: none;
             -webkit-appearance: none;
             -moz-appearance: none;
             @include transition();
@@ -101,8 +110,8 @@
         
             &:hover,
             &:focus {
-                background: $color-white;
-                color: $color-primary;
+                background: $color-primary;
+                color: $color-white;
             }
         }
     }
