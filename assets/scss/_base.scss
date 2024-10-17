@@ -246,7 +246,7 @@ a[role="button"] br {
 
 .user-content a[role="button"],
 .user-content input[type="button"],
-.user-content button:not(.team-members-block__item-bio-close):not(.team-members-block__item-bio-open),
+.user-content button:not(.team-members-block__item-bio-close):not(.team-members-block__item-bio-open):not(.concertina-block__item-heading),
 .user-content .wp-block-button__link,
 a[role="button"],
 input[type="button"],

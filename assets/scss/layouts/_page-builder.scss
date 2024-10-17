@@ -451,8 +451,10 @@
 					color: $color-white;
 					padding: 15px;
 					font-size: var(--font-small);
+					font-weight: 700;
 					border-radius: 0;
 					text-align: left;
+					cursor: pointer;
 
 					@include media(">tablet"){
 						padding: 8px 30px;
