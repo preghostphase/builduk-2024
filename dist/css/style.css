@@ -1423,7 +1423,7 @@ body.menu-active-mobile .header { height: 100%; width: 100%; }
 
 .menu-mobile .menu > .menu-item:not(:last-child) { margin-bottom: 2.5rem; }
 
-.menu-mobile .menu > .menu-item a { display: block; color: #fff; text-decoration: none; font-weight: 600; font-size: var(--font-large); }
+.menu-mobile .menu > .menu-item a { display: block; color: #fff; text-decoration: none; font-weight: 600; font-size: var(--font-medium); }
 
 .menu-mobile .menu > .menu-item-button a { background-color: var(--theme-primary); color: #fff; font-family: "proxima-nova", "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: var(--font-large); -webkit-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease; border-radius: 15px; padding: 15px 30px; text-align: center; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content; }
 
@@ -1433,7 +1433,7 @@ body.menu-active-mobile .header { height: 100%; width: 100%; }
 
 .menu-mobile .menu > .menu-item-has-children > .sub-menu { list-style: none; }
 
-.menu-mobile .menu > .menu-item-has-children > .sub-menu > .menu-item > a { font-size: var(--font-medium); margin-top: 1rem; position: relative; padding-left: 15px; }
+.menu-mobile .menu > .menu-item-has-children > .sub-menu > .menu-item > a { font-size: var(--font-small); margin-top: 1rem; position: relative; padding-left: 15px; }
 
 .menu-mobile .menu > .menu-item-has-children > .sub-menu > .menu-item > a:before { content: ""; top: 12px; left: 0; width: 10px; height: 2px; background-color: #fff; position: absolute; }
 

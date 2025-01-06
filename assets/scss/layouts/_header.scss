@@ -229,7 +229,7 @@ body.single-jobpost {
 			color: $color-white;
 			text-decoration: none;
 			font-weight: 600;
-			font-size: var(--font-large);
+			font-size: var(--font-medium);
 		}
 
 		> .menu-item-button a {
@@ -258,7 +258,7 @@ body.single-jobpost {
 			list-style: none;
 		}
 		> .menu-item-has-children > .sub-menu > .menu-item > a {
-			font-size: var(--font-medium);
+			font-size: var(--font-small);
 			margin-top: 1rem;
 			position: relative;
 			padding-left: 15px;
