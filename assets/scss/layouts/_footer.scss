@@ -4,6 +4,11 @@
 
 .footer {
 	background: $color-secondary;
+	border-top: 5px solid $color-anniversary;
+
+	@include media(">desktop"){
+		border-top: 8px solid $color-anniversary;
+	}
 
 	&__social {
 		.social-block {

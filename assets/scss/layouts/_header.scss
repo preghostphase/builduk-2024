@@ -31,15 +31,16 @@ body.single-jobpost {
 	z-index: $z-index-menu;
 	position: relative;
 	width: 100%;
-	height: $mobile-header-height;
+	height: auto;
 	background: $color-white;
 	transition: all 0.2s ease-in;
+	border-bottom: 5px solid $color-anniversary;
 
 	@include media(">desktop") {
 		width: $desktop-header-width;
 		background-color: $color-white;
-		height: auto;
 		transition: none;
+		border-bottom: 8px solid $color-anniversary;
 	}
 
 	body.menu-active-mobile & {
@@ -150,11 +151,11 @@ body.single-jobpost {
 	z-index: -1;
 	position: fixed;
 	background: $color-secondary;
-	top: $mobile-header-height;
+	top: 147px;
 	left: auto;
 	right: 0;
 	width: 100%;
-	height: calc(100vh - #{$mobile-header-height});
+	height: calc(100vh - 147px);
 	opacity: 0;
 	visibility: hidden;
 	overflow-x: hidden;
@@ -227,6 +228,7 @@ body.single-jobpost {
 			display: block;
 			color: $color-white;
 			text-decoration: none;
+			font-weight: 600;
 			font-size: var(--font-large);
 		}
 
@@ -274,7 +276,7 @@ body.single-jobpost {
 	}
 
 	.menu-mobile__wrapper {
-		padding: 100px 1rem 60px 0;
+		padding: 20px 1rem 40px 1rem;
 	}
 }
 
@@ -299,10 +301,10 @@ body.single-jobpost {
 		display: flex;
 		align-items: center;
 		height: auto;
-		width: 250px;
+		width: 280px;
 
 		@include media(">desktopLarge") {
-			width: 250px;
+			width: 350px;
 		}
 
 		img {
@@ -398,7 +400,7 @@ body.single-jobpost {
 
 			&:hover,
 			&:focus {
-				color: $color-primary;
+				color: $color-anniversary;
 
 				&::after {
 					width: 100%;
@@ -457,8 +459,12 @@ body.single-jobpost {
 			}
 
 			&:hover {
-				background-color: $color-primary;
-				color: $color-white;
+				background-color: $color-anniversary;
+				color: $color-secondary;
+
+				&::after {
+					background-color: $color-secondary;
+				}
 			}
 		}
 
